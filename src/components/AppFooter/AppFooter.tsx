@@ -3,14 +3,14 @@ import { endpoints, fetchList } from '@/libs/microcms';
 import type { InfoType } from '@/libs/microcms.type';
 import Link from 'next/link';
 import type React from 'react';
-import { Inner } from '../Inner/Inner';
-import styles from './Footer.module.scss';
+import { AppInner } from '../AppInner/AppInner';
+import styles from './AppFooter.module.scss';
 
-export const Footer = async () => {
+export const AppFooter = async () => {
 	const { contents: posts } = await fetchList<InfoType>(endpoints.info);
 	return (
 		<footer className={styles.footer}>
-			<Inner>
+			<AppInner>
 				{posts && (
 					<ul className={styles.list}>
 						{posts.map((post, index) => (
@@ -23,7 +23,7 @@ export const Footer = async () => {
 					</ul>
 				)}
 				<small className={styles.copy}>&copy;{siteName}</small>
-			</Inner>
+			</AppInner>
 		</footer>
 	);
 };

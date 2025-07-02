@@ -1,6 +1,5 @@
 import styles from '@/components/AppBreadcrumb/AppBreadcrumb.module.scss';
 import Link from 'next/link';
-import { Inner } from '../Inner/Inner';
 
 type Props = {
 	items: {

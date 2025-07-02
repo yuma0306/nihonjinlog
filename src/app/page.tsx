@@ -1,9 +1,9 @@
+import { AppFooter } from '@/components/AppFooter/AppFooter';
+import { AppHeader } from '@/components/AppHeader/AppHeader';
 import { AppMain } from '@/components/AppMain/AppMain';
-import { Footer } from '@/components/Footer/Footer';
-import { Header } from '@/components/Header/Header';
+import { AppWrapper } from '@/components/AppWrapper/AppWrapper';
 import { HomeFv } from '@/components/HomeFv/HomeFv';
 import { HomeIntro } from '@/components/HomeIntro/HomeIntro';
-import { Wrapper } from '@/components/Wrapper/Wrapper';
 import { siteName } from '@/constants/siteConfig';
 import {
 	getCommonMetadata,
@@ -32,14 +32,14 @@ export default async function HomePage() {
 		filters: 'recommend[equals]true',
 	});
 	return (
-		<Wrapper>
-			<Header isHome />
+		<AppWrapper>
+			<AppHeader isHome />
 			<AppMain>
 				<HomeFv posts={minFvPostLength ? copyPosts(posts) : posts} />
 				<HomeIntro />
 			</AppMain>
-			<Footer />
-		</Wrapper>
+			<AppFooter />
+		</AppWrapper>
 	);
 }
 

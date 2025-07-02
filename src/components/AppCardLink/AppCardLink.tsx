@@ -1,6 +1,6 @@
-import styles from '@/components/CardLink/CardLink.module.scss';
 import Image, { type ImageProps } from 'next/image';
 import Link from 'next/link';
+import styles from './AppCardLink.module.scss';
 
 type Props = {
 	link: string;
@@ -11,7 +11,7 @@ type Props = {
 	title: string;
 } & Omit<ImageProps, 'src' | 'width' | 'height' | 'alt'>;
 
-export const CardLink = ({
+export const AppCardLink = ({
 	link,
 	image,
 	width,

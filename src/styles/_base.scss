@@ -19,13 +19,13 @@ img  {
 h1,h2,h3,h4,h5,h6 {
   line-height: 1.4;
   letter-spacing: .04em;
-  text-box: trim-both;
+  // text-box: trim-both;
 }
 
 p,li,dt,dd {
 	line-height: 1.4;
 	letter-spacing: .04em;
-  text-box: trim-both;
+  // text-box: trim-both;
 }
 
 @include pc {
