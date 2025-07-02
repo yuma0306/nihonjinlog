@@ -1,10 +1,10 @@
-import styles from '@/components/Inner/Inner.module.scss';
+import styles from './AppInner.module.scss';
 
 type Props = {
 	children: React.ReactNode;
 };
 
-export const Inner = ({ children }: Props) => {
+export const AppInner = ({ children }: Props) => {
 	return (
 		<>
 			<div className={styles.inner}>{children}</div>

@@ -2,13 +2,13 @@ import { siteName } from '@/constants/siteConfig';
 import { siteMeta } from '@/constants/siteMeta';
 import Link from 'next/link';
 import type React from 'react';
-import styles from './Header.module.scss';
+import styles from './AppHeader.module.scss';
 
 type Props = {
 	isHome?: boolean;
 };
 
-export const Header = async ({ isHome = false }: Props) => {
+export const AppHeader = async ({ isHome = false }: Props) => {
 	return (
 		<header className={styles.header}>
 			<div className={styles.inner}>

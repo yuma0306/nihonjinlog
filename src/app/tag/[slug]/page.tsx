@@ -1,12 +1,12 @@
 import { AppBlock } from '@/components/AppBlock/AppBlock';
 import { AppBreadcrumb } from '@/components/AppBreadcrumb/AppBreadcrumb';
+import { AppCardLink } from '@/components/AppCardLink/AppCardLink';
+import { AppFooter } from '@/components/AppFooter/AppFooter';
+import { AppHeader } from '@/components/AppHeader/AppHeader';
 import { AppMain } from '@/components/AppMain/AppMain';
+import { AppWrapper } from '@/components/AppWrapper/AppWrapper';
 import { ArchiveList } from '@/components/ArchiveList/ArchiveList';
-import { CardLink } from '@/components/CardLink/CardLink';
-import { Footer } from '@/components/Footer/Footer';
-import { Header } from '@/components/Header/Header';
 import { HolizonalSpacer } from '@/components/HolizonalSpacer/HolizonalSpacer';
-import { Wrapper } from '@/components/Wrapper/Wrapper';
 import { getCommonMetadata, siteMeta } from '@/constants/siteMeta';
 import { siteRoutes } from '@/constants/siteRoutes';
 import { trimTimefromDate } from '@/functions/date';
@@ -83,8 +83,8 @@ export default async function TagArchivePage({ params }: Props) {
 		},
 	];
 	return (
-		<Wrapper>
-			<Header />
+		<AppWrapper>
+			<AppHeader />
 			<AppMain>
 				<HolizonalSpacer>
 					<AppBreadcrumb items={breadcrumbItems} />
@@ -96,7 +96,7 @@ export default async function TagArchivePage({ params }: Props) {
 									post.eyecatch?.height &&
 									post.publishedAt && (
 										<li key={post.id.toString()}>
-											<CardLink
+											<AppCardLink
 												link={`/blog/${post.id}/`}
 												image={post.eyecatch.url}
 												width={post.eyecatch.width}
@@ -111,7 +111,7 @@ export default async function TagArchivePage({ params }: Props) {
 					</AppBlock>
 				</HolizonalSpacer>
 			</AppMain>
-			<Footer />
-		</Wrapper>
+			<AppFooter />
+		</AppWrapper>
 	);
 }
