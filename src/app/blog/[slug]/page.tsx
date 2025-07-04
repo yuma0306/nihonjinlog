@@ -40,12 +40,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 	return {
 		...getCommonMetadata(),
-		title: post.title + siteMeta.titleSuffix,
-		description: post.description + siteMeta.descriptionSuffix,
+		title: `${post.title}${siteMeta.titleSuffix}`,
+		description: `${post.description}${siteMeta.descriptionSuffix}`,
 		openGraph: {
 			type: siteMeta.og.type,
-			title: post.title + siteMeta.titleSuffix,
-			description: post.description + siteMeta.descriptionSuffix,
+			title: `${post.title}${siteMeta.titleSuffix}`,
+			description: `${post.description}${siteMeta.descriptionSuffix}`,
 			images: post.eyecatch?.url
 				? [
 						{
