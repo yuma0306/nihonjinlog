@@ -16,8 +16,8 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
 	...getCommonMetadata(),
-	title: `${siteRoutes.notFound.text}${siteMeta.titleSuffix}`,
-	description: `${siteRoutes.notFound.text}${siteMeta.descriptionSuffix}`,
+	title: `${siteRoutes.notFound.title}${siteMeta.titleSuffix}`,
+	description: `${siteRoutes.notFound.title}${siteMeta.descriptionSuffix}`,
 	openGraph: getDefaultOpenGraph(),
 	alternates: {
 		canonical: siteRoutes.notFound.path,
@@ -31,11 +31,11 @@ export const metadata: Metadata = {
 export default function NotFoundPage() {
 	const breadcrumbItems = [
 		{
-			text: siteRoutes.home.text,
+			text: siteRoutes.home.title,
 			link: siteRoutes.home.path,
 		},
 		{
-			text: siteRoutes.notFound.text,
+			text: siteRoutes.notFound.title,
 			link: siteRoutes.notFound.path,
 		},
 	];

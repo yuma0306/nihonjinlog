@@ -1,15 +1,15 @@
 export const siteRoutes = {
 	home: {
-		text: 'ホーム',
+		title: 'ホーム',
 		path: '/',
 	},
 	notFound: {
-		text: 'ページが見つかりません',
+		title: 'ページが見つかりません',
 		path: '/404/',
 	},
 	blog: {
 		index: {
-			text: 'ブログ記事一覧',
+			title: 'ブログ記事一覧',
 			path: '/blog/',
 		},
 	},

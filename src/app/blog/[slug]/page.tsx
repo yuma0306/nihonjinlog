@@ -74,11 +74,11 @@ export default async function BlogDetailPage({ params }: Props) {
 
 	const breadcrumbItems = [
 		{
-			text: siteRoutes.home.text,
+			text: siteRoutes.home.title,
 			link: siteRoutes.home.path,
 		},
 		{
-			text: siteRoutes.blog.index.text,
+			text: siteRoutes.blog.index.title,
 			link: `${siteRoutes.blog.index.path}`,
 		},
 		{

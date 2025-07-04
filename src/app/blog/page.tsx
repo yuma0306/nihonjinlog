@@ -21,8 +21,8 @@ import { notFound } from 'next/navigation';
 
 export const metadata: Metadata = {
 	...getCommonMetadata(),
-	title: `${siteRoutes.blog.index.text}${siteMeta.titleSuffix}`,
-	description: `${siteRoutes.blog.index.text}${siteMeta.descriptionSuffix}`,
+	title: `${siteRoutes.blog.index.title}${siteMeta.titleSuffix}`,
+	description: `${siteRoutes.blog.index.title}${siteMeta.descriptionSuffix}`,
 	openGraph: getDefaultOpenGraph(),
 	alternates: {
 		canonical: siteRoutes.blog.index.path,
@@ -35,11 +35,11 @@ export default async function BlogArchivePage() {
 
 	const breadcrumbItems = [
 		{
-			text: siteRoutes.home.text,
+			text: siteRoutes.home.title,
 			link: siteRoutes.home.path,
 		},
 		{
-			text: siteRoutes.blog.index.text,
+			text: siteRoutes.blog.index.title,
 			link: `${siteRoutes.blog.index.path}`,
 		},
 	];

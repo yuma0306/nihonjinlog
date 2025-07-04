@@ -74,7 +74,7 @@ export default async function TagArchivePage({ params }: Props) {
 	}
 	const breadcrumbItems = [
 		{
-			text: siteRoutes.home.text,
+			text: siteRoutes.home.title,
 			link: siteRoutes.home.path,
 		},
 		{
