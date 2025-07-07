@@ -9,12 +9,15 @@
 		"knip": "npx knip"
 	},
 	"dependencies": {
+		"@hookform/resolvers": "^5.1.1",
 		"@next/third-parties": "^15.2.2",
 		"microcms-js-sdk": "^3.1.2",
 		"next": "^15.2.2",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
-		"swiper": "^11.2.4"
+		"react-hook-form": "^7.60.0",
+		"swiper": "^11.2.4",
+		"yup": "^1.6.1"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",

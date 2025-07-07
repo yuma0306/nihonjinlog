@@ -1,0 +1,49 @@
+@use '../../styles/use/import' as *;
+@use '../../styles/config/import' as *;
+
+@include pc {
+  .message {
+    display: grid;
+    grid-template-columns: minmax(15px, auto) 1fr;
+    position: relative;
+    align-items: center;
+    gap: 10px;
+    color: $valid;
+    font-weight: 500;
+    margin-left: 5px;
+    &[data-success='true'] {
+      color: $green;
+      &:before {
+        display: block;
+        content: '';
+        width: 15px;
+        height: 10px;
+        border-left: 2px solid $green;
+        border-bottom: 2px solid $green;
+        transform: rotate(-45deg);
+        margin-top: -5px;
+      }
+    }
+    &[data-success='false'] {
+      position: relative;
+      color: $valid;
+      &:before {
+        display: block;
+        width: 15px;
+        height: 2px;
+        content: '';
+        background-color: $valid;
+        rotate: 135deg;
+      }
+      &:after {
+        position: absolute;
+        display: block;
+        width: 15px;
+        height: 2px;
+        content: '';
+        background-color: $valid;
+        rotate: 45deg;
+      }
+    }
+  }
+}

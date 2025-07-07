@@ -1,0 +1,26 @@
+@use '../../styles/use/import' as *;
+@use '../../styles/config/import' as *;
+
+@include pc {
+  .label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-box: trim-both;
+  }
+  .tag {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: $gray;
+    color: $white;
+    text-box: trim-both;
+    font-weight: 500;
+    &[data-required='true'] {
+      background-color: $valid;
+    }
+  }
+  .text {
+    font-weight: 500;
+    flex: 1;
+  }
+}

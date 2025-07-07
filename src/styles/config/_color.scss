@@ -1,7 +1,16 @@
 $white: #fff;
 $black: #000;
+$black02:#333;
+$gray: #808080;
+$gray02: #ccc;
+$valid: #B00020;
+$valid10: color-mix(in srgb, $valid 10%, $white);
+$blue: #00aaff;
+$blue10: color-mix(in srgb, $blue 10%, $white);
+$green: #38a169;
 
-$primary: #565656;
+$primary: #e95464;
 $primary5: color-mix(in srgb, $primary 5%, $white);
 $primary10: color-mix(in srgb, $primary 10%, $white);
 $primary20: color-mix(in srgb, $primary 20%, $white);
+$primaryShadow80: color-mix(in srgb, $primary 80%, $black);

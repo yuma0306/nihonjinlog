@@ -1,0 +1,26 @@
+@use '../../styles/use/import' as *;
+@use '../../styles/config/import' as *;
+
+@include pc {
+  .button {
+    padding: 15px 20px;
+    background-color: $primary;
+    color: $white;
+    border-radius: 8px;
+    width: min(100%, 400px);
+    margin-inline: auto;
+    text-align: center;
+    font-weight: 700;
+    box-shadow: 0 4px 0 0 $primaryShadow80;
+    transition: transform $transition, box-shadow $transition;
+    &:disabled {
+      background-color: $gray02;
+      box-shadow: 0 4px 0 0 $gray02;
+      cursor: not-allowed;
+    }
+    &:hover:not(:disabled) {
+      transform: translateY(4px);
+      box-shadow: none;
+    }
+  }
+}

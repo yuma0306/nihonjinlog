@@ -1,0 +1,9 @@
+@use '../../styles/use/import' as *;
+@use '../../styles/config/import' as *;
+
+@include pc {
+  .group {
+    display: grid;
+    row-gap: 10px;
+  }
+}

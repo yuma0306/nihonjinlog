@@ -23,4 +23,8 @@ export const siteRoutes = {
 			path: '/info/',
 		},
 	},
+	contact: {
+		title: 'お問い合わせ',
+		path: '/contact/',
+	},
 } as const;
