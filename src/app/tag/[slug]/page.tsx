@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 			type: siteMeta.og.type,
 		},
 		alternates: {
-			canonical: `${siteRoutes.info.index.path}${tagContents[0].id}/`,
+			canonical: `${siteRoutes.info.path}${tagContents[0].id}/`,
 		},
 	};
 }
@@ -79,7 +79,7 @@ export default async function TagArchivePage({ params }: Props) {
 		},
 		{
 			text: `#${tagName}の記事一覧`,
-			link: `${siteRoutes.blog.index.path}${slug}/`,
+			link: `${siteRoutes.blog.path}${slug}/`,
 		},
 	];
 	return (

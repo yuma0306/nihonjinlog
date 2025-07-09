@@ -8,20 +8,14 @@ export const siteRoutes = {
 		path: '/404/',
 	},
 	blog: {
-		index: {
-			title: 'ブログ記事一覧',
-			path: '/blog/',
-		},
+		title: 'ブログ記事一覧',
+		path: '/blog/',
 	},
 	tag: {
-		index: {
-			path: '/tag/',
-		},
+		path: '/tag/',
 	},
 	info: {
-		index: {
-			path: '/info/',
-		},
+		path: '/info/',
 	},
 	contact: {
 		title: 'お問い合わせ',

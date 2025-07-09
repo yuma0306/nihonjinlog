@@ -22,7 +22,6 @@ export default function ContactPage() {
 			<AppHeader />
 			<AppMain>
 				<AppBlock variant="section">
-					<h1>{siteRoutes.contact.title}</h1>
 					<AppInner>
 						<ContactForm />
 					</AppInner>

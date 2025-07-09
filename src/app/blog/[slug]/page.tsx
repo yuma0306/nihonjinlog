@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 				: siteMeta.og.image,
 		},
 		alternates: {
-			canonical: `${siteRoutes.blog.index.path}${post.id}/`,
+			canonical: `${siteRoutes.blog.path}${post.id}/`,
 		},
 		robots: {
 			index: !post.noindex,
@@ -78,12 +78,12 @@ export default async function BlogDetailPage({ params }: Props) {
 			link: siteRoutes.home.path,
 		},
 		{
-			text: siteRoutes.blog.index.title,
-			link: `${siteRoutes.blog.index.path}`,
+			text: siteRoutes.blog.title,
+			link: `${siteRoutes.blog.path}`,
 		},
 		{
 			text: post.title,
-			link: `${siteRoutes.blog.index.path}${post.id}/`,
+			link: `${siteRoutes.blog.path}${post.id}/`,
 		},
 	];
 

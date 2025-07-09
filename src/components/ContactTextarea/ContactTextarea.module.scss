@@ -12,13 +12,15 @@
     &:focus {
       outline: none;
       border-color: $blue;
-      box-shadow: 0 0 0 2px $blue10;
+      box-shadow: 0 0 0 5px $blue10;
     }
     &[data-success='true'] {
       border-color: $green;
+      box-shadow: 0 0 0 5px $green10;
     }
     &[data-success='false'] {
       border-color: $valid;
+      box-shadow: 0 0 0 5px $valid10;
     }
   }
 }
