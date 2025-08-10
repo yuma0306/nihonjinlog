@@ -4,10 +4,11 @@ import { AppInner } from '@/components/AppInner/AppInner';
 import { AppMain } from '@/components/AppMain/AppMain';
 import { AppWrapper } from '@/components/AppWrapper/AppWrapper';
 import { ContactForm } from '@/components/ContactForm/ContactForm';
-import { getDefaultOpenGraph } from '@/constants/siteMeta';
+import { getCommonMetadata, getDefaultOpenGraph } from '@/constants/siteMeta';
 import { siteRoutes } from '@/constants/siteRoutes';
 
 export const metadata = {
+	...getCommonMetadata(),
 	title: siteRoutes.contact.title,
 	description: 'お問い合わせフォーム',
 	openGraph: getDefaultOpenGraph(),

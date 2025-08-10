@@ -4,7 +4,6 @@ import nodemailer from 'nodemailer';
 export async function POST(req: NextRequest) {
 	const { name, email, message } = await req.json();
 
-	// nodemailerの設定
 	const transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
@@ -17,7 +16,7 @@ export async function POST(req: NextRequest) {
 		from: email,
 		to: process.env.GMAIL_USER,
 		subject: `【お問い合わせ】${name}さんより`,
-		text: `お名前: ${name}\nメール: ${email}\n\n${message}`,
+		text: `お名前: ${name}\nメールアドレス: ${email}\n\n${message}`,
 	};
 
 	try {
