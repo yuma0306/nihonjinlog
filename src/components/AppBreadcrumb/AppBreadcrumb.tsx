@@ -1,5 +1,5 @@
-import styles from '@/components/AppBreadcrumb/AppBreadcrumb.module.scss';
 import Link from 'next/link';
+import styles from './AppBreadcrumb.module.scss';
 
 type Props = {
 	items: {

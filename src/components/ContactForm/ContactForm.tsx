@@ -89,7 +89,8 @@ export const ContactForm = () => {
 				const commonProps = {
 					id: field.name,
 					...register(field.name),
-					'data-success': isSuccess,
+					'data-success':
+						isSuccess === undefined ? undefined : String(isSuccess),
 				};
 				return (
 					<ContactFormGroup key={field.name}>
