@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		description: post.description + siteMeta.descriptionSuffix,
 		openGraph: getDefaultOpenGraph(),
 		alternates: {
-			canonical: `${siteRoutes.info.index.path}${post.id}/`,
+			canonical: `${siteRoutes.info.path}${post.id}/`,
 		},
 		robots: {
 			index: !post.noindex,
@@ -72,7 +72,7 @@ export default async function InfoDetailPage({ params }: Props) {
 		},
 		{
 			text: post.title,
-			link: `${siteRoutes.blog.index.path}${post.id}/`,
+			link: `${siteRoutes.blog.path}${post.id}/`,
 		},
 	];
 	return (

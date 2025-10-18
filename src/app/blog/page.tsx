@@ -21,11 +21,11 @@ import { notFound } from 'next/navigation';
 
 export const metadata: Metadata = {
 	...getCommonMetadata(),
-	title: `${siteRoutes.blog.index.title}${siteMeta.titleSuffix}`,
-	description: `${siteRoutes.blog.index.title}${siteMeta.descriptionSuffix}`,
+	title: `${siteRoutes.blog.title}${siteMeta.titleSuffix}`,
+	description: `${siteRoutes.blog.title}${siteMeta.descriptionSuffix}`,
 	openGraph: getDefaultOpenGraph(),
 	alternates: {
-		canonical: siteRoutes.blog.index.path,
+		canonical: siteRoutes.blog.path,
 	},
 };
 
@@ -39,8 +39,8 @@ export default async function BlogArchivePage() {
 			link: siteRoutes.home.path,
 		},
 		{
-			text: siteRoutes.blog.index.title,
-			link: `${siteRoutes.blog.index.path}`,
+			text: siteRoutes.blog.title,
+			link: `${siteRoutes.blog.path}`,
 		},
 	];
 	return (

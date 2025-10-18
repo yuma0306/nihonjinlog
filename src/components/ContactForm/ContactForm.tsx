@@ -1,10 +1,12 @@
 'use client';
 
+import { siteRoutes } from '@/constants/siteRoutes';
 import { contactSchema } from '@/schema/contactSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { AppButton } from '../AppButton/AppButton';
 import { AppForm } from '../AppForm/AppForm';
+import { AppHeadingLv1 } from '../AppHeadingLv1/AppHeadingLv1';
 import { ContactError } from '../ContactError/ContactError';
 import { ContactFormGroup } from '../ContactFormGroup/ContactFormGroup';
 import { ContactFormLabel } from '../ContactFormLabel/ContactFormLabel';
@@ -79,6 +81,7 @@ export const ContactForm = () => {
 
 	return (
 		<AppForm onSubmit={handleSubmit(onSubmit)} noValidate>
+			<AppHeadingLv1>{siteRoutes.contact.title}</AppHeadingLv1>
 			{fields.map((field) => {
 				const isSuccess = getIsSuccess(field.name as keyof ContactFormType);
 				const error = errors[field.name as keyof ContactFormType];
@@ -86,7 +89,8 @@ export const ContactForm = () => {
 				const commonProps = {
 					id: field.name,
 					...register(field.name),
-					'data-success': isSuccess,
+					'data-success':
+						isSuccess === undefined ? undefined : String(isSuccess),
 				};
 				return (
 					<ContactFormGroup key={field.name}>

@@ -1,0 +1,9 @@
+@use '../../styles/use/import' as *;
+@use '../../styles/config/import' as *;
+
+@include pc {
+  .heading {
+    font-size: 26px;
+    text-align: center;
+  }
+}

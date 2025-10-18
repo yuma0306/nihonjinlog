@@ -2,12 +2,17 @@ import styles from './ContactError.module.scss';
 
 type Props = {
 	children: React.ReactNode;
-	isSuccess: boolean;
+	isSuccess?: boolean;
 };
 
 export const ContactError = ({ children, isSuccess }: Props) => {
 	return (
-		<p className={styles.message} data-success={isSuccess}>
+		<p
+			className={styles.message}
+			data-success={
+				isSuccess === undefined ? undefined : String(isSuccess)
+			}
+		>
 			{children}
 		</p>
 	);
