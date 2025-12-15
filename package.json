@@ -1,35 +1,35 @@
 {
-  "name": "yuruminimal",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "dev-turb": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "knip": "npx knip"
-  },
-  "dependencies": {
-    "@hookform/resolvers": "^5.1.1",
-    "@next/third-parties": "^15.5.4",
-    "eslint-plugin-react-hooks": "^6.1.0",
-    "microcms-js-sdk": "^3.1.2",
-    "next": "15.5.9",
-    "nodemailer": "^7.0.5",
-    "react": "19.2",
-    "react-dom": "19.2",
-    "react-hook-form": "^7.60.0",
-    "swiper": "^11.2.4",
-    "yup": "^1.6.1"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@playwright/mcp": "^0.0.33",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "knip": "^5.45.0",
-    "sass": "^1.85.1",
-    "typescript": "^5"
-  }
+	"name": "yuruminimal",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"dev-turb": "next dev --turbopack",
+		"build": "next build",
+		"start": "next start",
+		"knip": "npx knip"
+	},
+	"dependencies": {
+		"@hookform/resolvers": "^5.1.1",
+		"@next/third-parties": "^15.5.4",
+		"eslint-plugin-react-hooks": "^6.1.0",
+		"microcms-js-sdk": "^3.1.2",
+		"next": "15.5.9",
+		"nodemailer": "^7.0.5",
+		"react": "19.2",
+		"react-dom": "19.2",
+		"react-hook-form": "^7.60.0",
+		"swiper": "^11.2.4",
+		"yup": "^1.6.1"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@playwright/mcp": "^0.0.33",
+		"@types/node": "^20",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"knip": "^5.45.0",
+		"sass": "^1.85.1",
+		"typescript": "^5"
+	}
 }
