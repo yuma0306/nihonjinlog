@@ -14,7 +14,7 @@
 		"@next/third-parties": "^15.5.4",
 		"eslint-plugin-react-hooks": "^6.1.0",
 		"microcms-js-sdk": "^3.1.2",
-		"next": "^16.0.10",
+		"next": "15.5.9",
 		"nodemailer": "^7.0.5",
 		"react": "19.2",
 		"react-dom": "19.2",
