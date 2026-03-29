@@ -1,17 +1,14 @@
 @use '../../styles/use/import' as *;
 @use '../../styles/config/import' as *;
 
+.logo {
+  text-align: center;
+  color: $primary;
+  font-weight: $fwMedium;
+}
+
 @include pc {
-  .header {
-    padding: 20px;
-  }
-  .inner {
-    display: grid;
-    place-content: center;
-  }
   .logo {
-    color: $primary;
-    font-weight: $fwMedium;
     font-size: 24px;
     &[data-is-home='false'] {
       @include hoverOpacity;
@@ -20,18 +17,7 @@
 }
 
 @include sp {
-  .header {
-    padding: vw(20);
-  }
-  .inner {
-    display: grid;
-    row-gap: vw(8);
-  }
   .logo {
-    color: $primary;
-    font-weight: $fwMedium;
-    text-shadow: vw(1) 0 vw(10) $white;
     font-size: vw(22);
-    text-align: center;
   }
 }

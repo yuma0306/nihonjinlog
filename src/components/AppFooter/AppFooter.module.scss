@@ -2,9 +2,6 @@
 @use '../../styles/config/import' as *;
 
 @include pc {
-  .footer {
-    padding: 40px 0;
-  }
   .list {
     display: flex;
     gap: 20px;
@@ -23,9 +20,6 @@
 }
 
 @include sp {
-  .footer {
-    padding: vw(20) 0;
-  }
   .list {
     display: flex;
     gap: vw(20);

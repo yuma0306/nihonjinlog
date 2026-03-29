@@ -3,7 +3,6 @@ import { AppHeader } from '@/components/AppHeader/AppHeader';
 import { AppMain } from '@/components/AppMain/AppMain';
 import { AppWrapper } from '@/components/AppWrapper/AppWrapper';
 import { HomeFv } from '@/components/HomeFv/HomeFv';
-import { HomeIntro } from '@/components/HomeIntro/HomeIntro';
 import { siteConfig } from '@/constants/siteConfig';
 import {
 	getCommonMetadata,
@@ -36,7 +35,6 @@ export default async function HomePage() {
 			<AppHeader isHome />
 			<AppMain>
 				<HomeFv posts={minFvPostLength ? copyPosts(posts) : posts} />
-				<HomeIntro />
 			</AppMain>
 			<AppFooter />
 		</AppWrapper>
