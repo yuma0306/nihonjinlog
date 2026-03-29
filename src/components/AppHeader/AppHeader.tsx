@@ -1,6 +1,5 @@
-import { siteName } from '@/constants/siteConfig';
+import { siteConfig } from '@/constants/siteConfig';
 import Link from 'next/link';
-import type React from 'react';
 import styles from './AppHeader.module.scss';
 
 type Props = {
@@ -12,10 +11,10 @@ export const AppHeader = async ({ isHome = false }: Props) => {
 		<header className={styles.header}>
 			<div className={styles.inner}>
 				{isHome ? (
-					<h1 className={styles.logo}>{siteName}</h1>
+					<h1 className={styles.logo}>{siteConfig.siteName}</h1>
 				) : (
 					<Link href={'/'} className={styles.logo} data-is-home={isHome}>
-						{siteName}
+						{siteConfig.siteName}
 					</Link>
 				)}
 			</div>

@@ -4,7 +4,7 @@ import { AppMain } from '@/components/AppMain/AppMain';
 import { AppWrapper } from '@/components/AppWrapper/AppWrapper';
 import { HomeFv } from '@/components/HomeFv/HomeFv';
 import { HomeIntro } from '@/components/HomeIntro/HomeIntro';
-import { siteName } from '@/constants/siteConfig';
+import { siteConfig } from '@/constants/siteConfig';
 import {
 	getCommonMetadata,
 	getDefaultOpenGraph,
@@ -19,7 +19,7 @@ const minFvPostLength = 6;
 
 export const metadata: Metadata = {
 	...getCommonMetadata(),
-	title: siteName,
+	title: siteConfig.siteName,
 	description: siteMeta.description,
 	openGraph: getDefaultOpenGraph(),
 	alternates: {

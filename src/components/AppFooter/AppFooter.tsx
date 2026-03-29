@@ -1,8 +1,7 @@
-import { siteName } from '@/constants/siteConfig';
+import { siteConfig } from '@/constants/siteConfig';
 import { endpoints, fetchList } from '@/libs/microcms';
 import type { InfoType } from '@/libs/microcms.type';
 import Link from 'next/link';
-import type React from 'react';
 import { AppInner } from '../AppInner/AppInner';
 import styles from './AppFooter.module.scss';
 
@@ -32,7 +31,7 @@ export const AppFooter = async () => {
 						))}
 					</ul>
 				)}
-				<small className={styles.copy}>&copy;{siteName}</small>
+				<small className={styles.copy}>&copy;{siteConfig.siteName}</small>
 			</AppInner>
 		</footer>
 	);

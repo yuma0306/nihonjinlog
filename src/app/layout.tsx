@@ -1,7 +1,7 @@
 import { GoogleTagManager } from '@next/third-parties/google';
 import { Noto_Serif_JP } from 'next/font/google';
 import '../styles/global.scss';
-import { gtmId } from '@/constants/siteConfig';
+import { siteConfig } from '@/constants/siteConfig';
 import type { Viewport } from 'next';
 
 const font = Noto_Serif_JP({
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="ja">
-			<GoogleTagManager gtmId={`GTM-${gtmId}`} />
+			<GoogleTagManager gtmId={`GTM-${siteConfig.gtmId}`} />
 			<body className={`${font.className}`}>{children}</body>
 		</html>
 	);

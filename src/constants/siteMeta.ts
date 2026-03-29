@@ -1,15 +1,15 @@
-import { baseUrl, siteName } from './siteConfig';
+import { siteConfig } from './siteConfig';
 
 export const siteMeta = {
-	description: `${siteName}では無理しないミニマルな生活について発信しています。`,
-	titleSuffix: ` | ${siteName}`,
-	descriptionSuffix: ` | ${siteName}では無理しないミニマルな生活について発信しています。`,
+	description: `${siteConfig.siteName}では無理しないミニマルな生活について発信しています。`,
+	titleSuffix: ` | ${siteConfig.siteName}`,
+	descriptionSuffix: ` | ${siteConfig.siteName}では無理しないミニマルな生活について発信しています。`,
 	og: {
 		image: {
 			url: '/img/og-image.png',
 			width: 1200,
 			height: 630,
-			alt: siteName,
+			alt: siteConfig.siteName,
 		},
 		type: 'website' as const,
 	},
@@ -26,20 +26,20 @@ export const siteMeta = {
 		apple: { url: '/img/favicon/apple-touch-icon.png', sizes: '180x180' },
 	},
 	appleWebApp: {
-		title: siteName,
+		title: siteConfig.siteName,
 	},
 	manifest: '/img/favicon/site.webmanifest',
 };
 
 export const getCommonMetadata = () => ({
-	metadataBase: new URL(baseUrl),
+	metadataBase: new URL(siteConfig.baseUrl),
 	icons: siteMeta.icons,
 	appleWebApp: siteMeta.appleWebApp,
 	manifest: siteMeta.manifest,
 });
 
 export const getDefaultOpenGraph = () => ({
-	title: siteName,
+	title: siteConfig.siteName,
 	description: siteMeta.description,
 	images: siteMeta.og.image,
 	type: siteMeta.og.type,

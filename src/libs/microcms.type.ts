@@ -8,14 +8,16 @@ export type BlogType = {
 	id: MicroCMSContentId;
 	title: string;
 	content: string;
-	eyecatch?: MicroCMSImage;
 	label: string;
 	tags: TagType[];
 	recommend: boolean;
 	description: string;
 	noindex: boolean;
 	nofollow: boolean;
-} & MicroCMSDate;
+} & Partial<{
+	eyecatch: MicroCMSImage;
+}> &
+	MicroCMSDate;
 
 export type TagType = {
 	id: MicroCMSContentId;
