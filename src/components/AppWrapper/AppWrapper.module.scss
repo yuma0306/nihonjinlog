@@ -7,3 +7,15 @@
   grid-template-rows: auto 1fr auto;
   min-height: 100dvh;
 }
+
+@include pc {
+  .wrapper {
+    padding-block: 20px;
+  }
+}
+
+@include sp {
+  .wrapper {
+    padding-block: vw(20);
+  }
+}
