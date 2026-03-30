@@ -1,34 +1,45 @@
 import { siteConfig } from '@/constants/siteConfig';
 import { siteRoutes } from '@/constants/siteRoutes';
 import { endpoints, fetchList } from '@/libs/microcms';
-import type { BlogType, InfoType, TagType } from '@/libs/microcms.type';
+import type {
+	CategoryType,
+	InfoType,
+	ThailandType,
+} from '@/libs/microcms.type';
 import type { MetadataRoute } from 'next';
+
+const toSitemapDate = (date: string | Date) =>
+	new Date(date).toISOString().split('T')[0];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const routes = [
 		{
 			url: `${siteConfig.baseUrl}/`,
-			lastModified: new Date(),
+			lastModified: toSitemapDate(new Date()),
 			changeFrequency: 'weekly' as const,
 			priority: 1.0,
 		},
 	];
 
-	const { contents: blogs } = await fetchList<BlogType>(endpoints.blogs);
-	const blogUrls = blogs.map((blog) => {
+	const { contents: thailandPosts } = await fetchList<ThailandType>(
+		endpoints.thailand,
+	);
+	const thailandPostUrls = thailandPosts.map((thailandPost) => {
 		return {
-			url: `${siteConfig.baseUrl}${siteRoutes.blog.path}${blog.id}/`,
-			lastModified: new Date(blog.updatedAt),
+			url: `${siteConfig.baseUrl}${siteRoutes.thailandDetail.path(thailandPost.id)}`,
+			lastModified: toSitemapDate(thailandPost.updatedAt),
 			changeFrequency: 'weekly' as const,
 			priority: 0.8,
 		};
 	});
 
-	const { contents: tags } = await fetchList<TagType>(endpoints.tags);
-	const tagUrls = tags.map((tag) => {
+	const { contents: categories } = await fetchList<CategoryType>(
+		endpoints.categories,
+	);
+	const categoryUrls = categories.map((category) => {
 		return {
-			url: `${siteConfig.baseUrl}${siteRoutes.tag.path}${tag.id}/`,
-			lastModified: new Date(tag.updatedAt),
+			url: `${siteConfig.baseUrl}${siteRoutes.category.path(category.id)}`,
+			lastModified: toSitemapDate(category.updatedAt),
 			changeFrequency: 'weekly' as const,
 			priority: 0.8,
 		};
@@ -38,11 +49,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const infoUrls = infos.map((info) => {
 		return {
 			url: `${siteConfig.baseUrl}${siteRoutes.info.path}${info.id}/`,
-			lastModified: new Date(info.updatedAt),
+			lastModified: toSitemapDate(info.updatedAt),
 			changeFrequency: 'monthly' as const,
 			priority: 0.3,
 		};
 	});
 
-	return [...routes, ...blogUrls, ...tagUrls, ...infoUrls];
+	return [...routes, ...thailandPostUrls, ...infoUrls];
 }

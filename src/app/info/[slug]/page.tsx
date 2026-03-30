@@ -72,7 +72,7 @@ export default async function InfoDetailPage({ params }: Props) {
 		},
 		{
 			text: post.title,
-			link: `${siteRoutes.blog.path}${post.id}/`,
+			link: siteRoutes.infoDetail.path(post.id),
 		},
 	];
 	return (
