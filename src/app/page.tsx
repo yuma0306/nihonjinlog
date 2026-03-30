@@ -11,7 +11,7 @@ import {
 } from '@/constants/siteMeta';
 import { siteRoutes } from '@/constants/siteRoutes';
 import { endpoints, fetchList } from '@/libs/microcms';
-import type { BlogType } from '@/libs/microcms.type';
+import type { ThailandType } from '@/libs/microcms.type';
 import type { Metadata } from 'next';
 
 const minFvPostLength = 6;
@@ -27,9 +27,13 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-	const { contents: posts } = await fetchList<BlogType>(endpoints.blogs, {
-		filters: 'recommend[equals]true',
-	});
+	const { contents: posts } = await fetchList<ThailandType>(
+		endpoints.thailand,
+		{
+			filters: 'isRecommend[equals]true',
+		},
+	);
+	console.log(posts);
 	return (
 		<AppWrapper>
 			<AppHeader isHome />
@@ -41,7 +45,7 @@ export default async function HomePage() {
 	);
 }
 
-function copyPosts(posts: BlogType[]) {
+function copyPosts(posts: ThailandType[]) {
 	if (posts.length === 0) return [];
 	if (posts.length > minFvPostLength) return posts;
 	const doubledPosts = [...posts, ...posts];

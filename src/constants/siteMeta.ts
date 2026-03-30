@@ -1,9 +1,9 @@
 import { siteConfig } from './siteConfig';
 
 export const siteMeta = {
-	description: `${siteConfig.siteName}では無理しないミニマルな生活について発信しています。`,
-	titleSuffix: ` | ${siteConfig.siteName}`,
-	descriptionSuffix: ` | ${siteConfig.siteName}では無理しないミニマルな生活について発信しています。`,
+	description: `${siteConfig.siteName}ではタイでの生活について発信しています。`,
+	titleSuffix: `｜${siteConfig.siteName}`,
+	descriptionSuffix: `${siteConfig.siteName}ではタイでの生活について発信しています。`,
 	og: {
 		image: {
 			url: '/img/og-image.png',

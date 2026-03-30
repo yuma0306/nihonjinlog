@@ -1,16 +1,16 @@
 import styles from '@/components/ArticleHead/ArticleHead.module.scss';
+import { siteRoutes } from '@/constants/siteRoutes';
 import { trimTimefromDate } from '@/functions/date';
-import type { BlogType } from '@/libs/microcms.type';
-import type { MicroCMSImage } from 'microcms-js-sdk';
+import type { ThailandType } from '@/libs/microcms.type';
 import Image from 'next/image';
 import Link from 'next/link';
 
 type Props = {
-	title: string;
-	createdAt: string;
-	updatedAt: string;
-	eyecatch?: MicroCMSImage;
-	tags?: BlogType['tags'];
+	title: ThailandType['title'];
+	createdAt: ThailandType['createdAt'];
+	updatedAt: ThailandType['updatedAt'];
+	category?: ThailandType['category'];
+	eyecatch?: ThailandType['eyecatch'];
 };
 
 export const ArticleHead = ({
@@ -18,7 +18,7 @@ export const ArticleHead = ({
 	createdAt,
 	updatedAt,
 	eyecatch,
-	tags,
+	category,
 }: Props) => {
 	return (
 		<div className={styles.articleHead}>
@@ -31,17 +31,16 @@ export const ArticleHead = ({
 				</time>
 			</div>
 			<h1 className={styles.heading}>{title}</h1>
-			{tags && (
+			{category !== undefined && (
 				<ul className={styles.tags}>
-					{tags.map((tag, index) => {
-						return (
-							<li className={styles.tag} key={index}>
-								<Link href={`/tag/${tag.id}/`} className={styles.link}>
-									#{tag.name}
-								</Link>
-							</li>
-						);
-					})}
+					<li className={styles.tag}>
+						<Link
+							href={siteRoutes.category.path(category.id)}
+							className={styles.link}
+						>
+							{category.name}
+						</Link>
+					</li>
 				</ul>
 			)}
 			{eyecatch?.width && eyecatch?.height && (

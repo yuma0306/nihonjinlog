@@ -11,12 +11,14 @@ import { getCommonMetadata, siteMeta } from '@/constants/siteMeta';
 import { siteRoutes } from '@/constants/siteRoutes';
 import { trimTimefromDate } from '@/functions/date';
 import { endpoints, fetchList } from '@/libs/microcms';
-import type { BlogType, TagType } from '@/libs/microcms.type';
+import type { CategoryType, ThailandType } from '@/libs/microcms.type';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
-	const { contents: tags } = await fetchList<TagType>(endpoints.tags);
+	const { contents: tags } = await fetchList<CategoryType>(
+		endpoints.categories,
+	);
 	const paths = tags.map((tag) => {
 		return {
 			slug: tag.id,
@@ -35,40 +37,43 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { slug } = await params;
-	const { contents: tagContents } = await fetchList<TagType>(endpoints.tags, {
-		filters: `id[equals]${slug}`,
-	});
-	tagContents.length === 0 && notFound();
+	const { contents: category } = await fetchList<CategoryType>(
+		endpoints.categories,
+		{
+			filters: `id[equals]${slug}`,
+		},
+	);
+	category.length === 0 && notFound();
 
-	const tagName = tagContents[0].name;
+	const categoryName = category[0].name;
 	return {
 		...getCommonMetadata(),
-		title: `${tagName}の記事一覧${siteMeta.titleSuffix}`,
-		description: `${tagName}の記事一覧${siteMeta.descriptionSuffix}`,
+		title: `${categoryName}の記事一覧${siteMeta.titleSuffix}`,
+		description: `${categoryName}の記事一覧${siteMeta.descriptionSuffix}`,
 		openGraph: {
-			title: `${tagName}の記事一覧${siteMeta.titleSuffix}`,
-			description: `${tagName}の記事一覧${siteMeta.descriptionSuffix}`,
+			title: `${categoryName}の記事一覧${siteMeta.titleSuffix}`,
+			description: `${categoryName}の記事一覧${siteMeta.descriptionSuffix}`,
 			images: siteMeta.og.image,
 			type: siteMeta.og.type,
 		},
 		alternates: {
-			canonical: `${siteRoutes.info.path}${tagContents[0].id}/`,
+			canonical: siteRoutes.category.path(category[0].id),
 		},
 	};
 }
 
 export default async function TagArchivePage({ params }: Props) {
 	const { slug } = await params;
-	const { contents: tagContents } = await fetchList<TagType>(endpoints.tags, {
-		filters: `id[equals]${slug}`,
-	});
+	const { contents: tagContents } = await fetchList<CategoryType>(
+		endpoints.categories,
+		{
+			filters: `id[equals]${slug}`,
+		},
+	);
 	tagContents.length === 0 && notFound();
 
-	const tagName = tagContents[0].name;
-	const { contents } = await fetchList<BlogType>(endpoints.blogs);
-	const posts = contents.filter((item) =>
-		item.tags.some((tag) => tag.id.toString() === slug),
-	);
+	const { contents } = await fetchList<ThailandType>(endpoints.thailand);
+	const posts = contents.filter((item) => item.category.id.toString() === slug);
 	if (posts.length === 0) {
 		notFound();
 	}
@@ -78,8 +83,8 @@ export default async function TagArchivePage({ params }: Props) {
 			link: siteRoutes.home.path,
 		},
 		{
-			text: `#${tagName}の記事一覧`,
-			link: `${siteRoutes.blog.path}${slug}/`,
+			text: siteRoutes.category.title,
+			link: siteRoutes.category.path(slug),
 		},
 	];
 	return (
@@ -97,7 +102,7 @@ export default async function TagArchivePage({ params }: Props) {
 									post.publishedAt && (
 										<li key={post.id.toString()}>
 											<AppCardLink
-												link={`/blog/${post.id}/`}
+												link={siteRoutes.thailandDetail.path(post.id)}
 												image={post.eyecatch.url}
 												width={post.eyecatch.width}
 												height={post.eyecatch.height}

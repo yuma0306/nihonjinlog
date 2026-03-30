@@ -15,22 +15,22 @@ import {
 import { siteRoutes } from '@/constants/siteRoutes';
 import { trimTimefromDate } from '@/functions/date';
 import { endpoints, fetchList } from '@/libs/microcms';
-import type { BlogType } from '@/libs/microcms.type';
+import type { ThailandType } from '@/libs/microcms.type';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 export const metadata: Metadata = {
 	...getCommonMetadata(),
-	title: `${siteRoutes.blog.title}${siteMeta.titleSuffix}`,
-	description: `${siteRoutes.blog.title}${siteMeta.descriptionSuffix}`,
+	title: `${siteRoutes.thailand.title}${siteMeta.titleSuffix}`,
+	description: `${siteRoutes.thailand.title}${siteMeta.descriptionSuffix}`,
 	openGraph: getDefaultOpenGraph(),
 	alternates: {
-		canonical: siteRoutes.blog.path,
+		canonical: siteRoutes.thailand.path,
 	},
 };
 
-export default async function BlogArchivePage() {
-	const { contents: posts } = await fetchList<BlogType>(endpoints.blogs);
+export default async function ThailandArchivePage() {
+	const { contents: posts } = await fetchList<ThailandType>(endpoints.thailand);
 	posts.length === 0 && notFound();
 
 	const breadcrumbItems = [
@@ -39,8 +39,8 @@ export default async function BlogArchivePage() {
 			link: siteRoutes.home.path,
 		},
 		{
-			text: siteRoutes.blog.title,
-			link: `${siteRoutes.blog.path}`,
+			text: siteRoutes.thailand.title,
+			link: siteRoutes.thailand.path,
 		},
 	];
 	return (
@@ -58,7 +58,7 @@ export default async function BlogArchivePage() {
 									post.publishedAt && (
 										<li key={post.id.toString()}>
 											<AppCardLink
-												link={`/blog/${post.id}/`}
+												link={siteRoutes.thailandDetail.path(post.id)}
 												image={post.eyecatch.url}
 												width={post.eyecatch.width}
 												height={post.eyecatch.height}

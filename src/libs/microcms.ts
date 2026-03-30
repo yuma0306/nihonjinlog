@@ -2,9 +2,9 @@ import { createClient } from 'microcms-js-sdk';
 import type { MicroCMSQueries } from 'microcms-js-sdk';
 
 export const endpoints = {
-	blogs: 'blogs',
-	tags: 'tags',
 	info: 'info',
+	categories: 'categories',
+	thailand: 'thailand',
 } as const;
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {

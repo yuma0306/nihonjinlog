@@ -11,12 +11,12 @@ import { HolizonalSpacer } from '@/components/HolizonalSpacer/HolizonalSpacer';
 import { getCommonMetadata, siteMeta } from '@/constants/siteMeta';
 import { siteRoutes } from '@/constants/siteRoutes';
 import { endpoints, fetchList, fetchListDetail } from '@/libs/microcms';
-import type { BlogType } from '@/libs/microcms.type';
+import type { ThailandType } from '@/libs/microcms.type';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
-	const { contents } = await fetchList<BlogType>(endpoints.blogs);
+	const { contents } = await fetchList<ThailandType>(endpoints.thailand);
 	const paths = contents.map((post) => {
 		return {
 			slug: post.id,
@@ -35,7 +35,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { slug } = await params;
-	const post = await fetchListDetail<BlogType>(endpoints.blogs, slug);
+	const post = await fetchListDetail<ThailandType>(endpoints.thailand, slug);
 	!post && notFound();
 
 	return {
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 				: siteMeta.og.image,
 		},
 		alternates: {
-			canonical: `${siteRoutes.blog.path}${post.id}/`,
+			canonical: siteRoutes.thailandDetail.path(post.id),
 		},
 		robots: {
 			index: !post.noindex,
@@ -69,7 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogDetailPage({ params }: Props) {
 	const { slug } = await params;
-	const post = await fetchListDetail<BlogType>(endpoints.blogs, slug);
+	const post = await fetchListDetail<ThailandType>(endpoints.thailand, slug);
 	!post && notFound();
 
 	const breadcrumbItems = [
@@ -78,12 +78,12 @@ export default async function BlogDetailPage({ params }: Props) {
 			link: siteRoutes.home.path,
 		},
 		{
-			text: siteRoutes.blog.title,
-			link: `${siteRoutes.blog.path}`,
+			text: siteRoutes.thailand.title,
+			link: siteRoutes.thailand.path,
 		},
 		{
 			text: post.title,
-			link: `${siteRoutes.blog.path}${post.id}/`,
+			link: siteRoutes.thailandDetail.path(post.id),
 		},
 	];
 
@@ -100,7 +100,7 @@ export default async function BlogDetailPage({ params }: Props) {
 								updatedAt={post.updatedAt}
 								title={post.title}
 								eyecatch={post.eyecatch}
-								tags={post.tags}
+								category={post.category}
 							/>
 							<ArticleBody html={post.content} />
 						</AppGrid>

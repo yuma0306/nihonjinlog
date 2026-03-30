@@ -1,13 +1,14 @@
 'use client';
 
-import type { BlogType } from '@/libs/microcms.type';
+import { siteRoutes } from '@/constants/siteRoutes';
+import type { ThailandType } from '@/libs/microcms.type';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback, useEffect, useState } from 'react';
 import { HomeFvCard } from '../HomeFvCard/HomeFvCard';
 import styles from './HomeFv.module.scss';
 
 type Props = {
-	posts: BlogType[];
+	posts: ThailandType[];
 };
 
 export const HomeFv = ({ posts }: Props) => {
@@ -61,7 +62,7 @@ export const HomeFv = ({ posts }: Props) => {
 							return (
 								<div className={styles.slide} key={index}>
 									<HomeFvCard
-										link={`/blog/${post.id}/`}
+										link={`${siteRoutes.thailand.path}${post.id}/`}
 										image={eyecatch.url}
 										width={eyecatch.width}
 										height={eyecatch.height}
