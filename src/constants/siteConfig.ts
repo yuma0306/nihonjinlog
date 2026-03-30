@@ -1,6 +1,6 @@
 export const siteConfig = {
 	siteName: 'にほんじんログ',
-	gtmId: '5MBX2WQF',
+	gtmId: 'P9S9MBMF',
 	baseUrl:
 		process.env.NODE_ENV === 'development'
 			? 'http://localhost:3000'
