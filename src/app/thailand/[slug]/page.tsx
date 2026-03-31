@@ -7,6 +7,7 @@ import { AppHeader } from '@/components/AppHeader/AppHeader';
 import { AppWrapper } from '@/components/AppWrapper/AppWrapper';
 import { ArticleBody } from '@/components/ArticleBody/ArticleBody';
 import { ArticleHead } from '@/components/ArticleHead/ArticleHead';
+import { GridItem } from '@/components/GridItem/GridItem';
 import { getCommonMetadata, siteMeta } from '@/constants/siteMeta';
 import { siteRoutes } from '@/constants/siteRoutes';
 import { endpoints, fetchList, fetchListDetail } from '@/libs/microcms';
@@ -87,21 +88,30 @@ export default async function BlogDetailPage({ params }: Props) {
 	];
 
 	return (
-		<AppWrapper isSmall>
+		<AppWrapper>
 			<AppHeader />
 			<AppBreadcrumb items={breadcrumbItems} />
-			<AppBlock>
-				<AppGrid as="div">
-					<ArticleHead
-						createdAt={post.createdAt}
-						updatedAt={post.updatedAt}
-						title={post.title}
-						eyecatch={post.eyecatch}
-						category={post.category}
-					/>
-					<ArticleBody html={post.content} />
-				</AppGrid>
-			</AppBlock>
+			<GridItem
+				startPc={2}
+				endPc={12}
+				startTab={1}
+				endTab={-1}
+				startSp={1}
+				endSp={-1}
+			>
+				<AppBlock>
+					<AppGrid as="div">
+						<ArticleHead
+							createdAt={post.createdAt}
+							updatedAt={post.updatedAt}
+							title={post.title}
+							eyecatch={post.eyecatch}
+							category={post.category}
+						/>
+						<ArticleBody html={post.content} />
+					</AppGrid>
+				</AppBlock>
+			</GridItem>
 			<AppFooterNav />
 			<AppFooter />
 		</AppWrapper>
