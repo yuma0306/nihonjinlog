@@ -1,0 +1,6 @@
+@use 'sass:map';
+@use '../../config/space' as *;
+
+@function space($key) {
+  @return map.get($space-map, $key);
+}

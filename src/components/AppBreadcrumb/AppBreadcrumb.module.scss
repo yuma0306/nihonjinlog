@@ -1,16 +1,17 @@
 @use '../../styles/use/import' as *;
 @use '../../styles/config/import' as *;
 
+.nav {
+  grid-column: 1 / -1;
+}
+
 @include pc {
   .list {
     display: flex;
     align-items: flex-end;
-    column-gap: 30px;
-    padding-bottom: 20px;
+    column-gap: #{$space5}px;
     overflow-x: auto;
     white-space: nowrap;
-    max-width: calc(#{$innerWidth}px + 40px);
-    margin-inline: auto;
   }
   .item {
     position: relative;
@@ -46,8 +47,7 @@
   .list {
     display: flex;
     align-items: flex-end;
-    column-gap: vw(30);
-    padding-bottom: vw(10);
+    column-gap: vw(#{$space5});
     overflow-x: auto;
     white-space: nowrap;
   }

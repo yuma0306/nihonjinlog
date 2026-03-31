@@ -5,6 +5,10 @@
 $carouselTab: 768px;
 $carouselPc: 1024px;
 
+.fv {
+  grid-column: 1 / -1;
+}
+
 .viewport {
   overflow: hidden;
 }

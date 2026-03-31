@@ -1,6 +1,10 @@
 @use '../../styles/use/import' as *;
 @use '../../styles/config/import' as *;
 
+.header {
+  grid-column: 1 / -1;
+}
+
 .logo {
   text-align: center;
   color: $primary;

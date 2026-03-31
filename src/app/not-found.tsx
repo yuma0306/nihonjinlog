@@ -1,11 +1,10 @@
 import { AppBlock } from '@/components/AppBlock/AppBlock';
 import { AppBreadcrumb } from '@/components/AppBreadcrumb/AppBreadcrumb';
 import { AppFooter } from '@/components/AppFooter/AppFooter';
+import { AppFooterNav } from '@/components/AppFooterNav/AppFooterNav';
 import { AppHeader } from '@/components/AppHeader/AppHeader';
-import { AppMain } from '@/components/AppMain/AppMain';
 import { AppNotFound } from '@/components/AppNotFound/AppNotFound';
 import { AppWrapper } from '@/components/AppWrapper/AppWrapper';
-import { HolizonalSpacer } from '@/components/HolizonalSpacer/HolizonalSpacer';
 import {
 	getCommonMetadata,
 	getDefaultOpenGraph,
@@ -40,18 +39,13 @@ export default function NotFoundPage() {
 		},
 	];
 	return (
-		<AppWrapper>
+		<AppWrapper isSmall>
 			<AppHeader />
-			<AppMain>
-				<HolizonalSpacer>
-					<AppBreadcrumb items={breadcrumbItems} />
-				</HolizonalSpacer>
-				<HolizonalSpacer>
-					<AppBlock>
-						<AppNotFound />
-					</AppBlock>
-				</HolizonalSpacer>
-			</AppMain>
+			<AppBreadcrumb items={breadcrumbItems} />
+			<AppBlock>
+				<AppNotFound />
+			</AppBlock>
+			<AppFooterNav />
 			<AppFooter />
 		</AppWrapper>
 	);

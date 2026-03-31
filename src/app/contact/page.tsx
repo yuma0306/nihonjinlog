@@ -1,7 +1,7 @@
 import { AppBlock } from '@/components/AppBlock/AppBlock';
+import { AppFooter } from '@/components/AppFooter/AppFooter';
+import { AppFooterNav } from '@/components/AppFooterNav/AppFooterNav';
 import { AppHeader } from '@/components/AppHeader/AppHeader';
-import { AppInner } from '@/components/AppInner/AppInner';
-import { AppMain } from '@/components/AppMain/AppMain';
 import { AppWrapper } from '@/components/AppWrapper/AppWrapper';
 import { ContactForm } from '@/components/ContactForm/ContactForm';
 import { getCommonMetadata, getDefaultOpenGraph } from '@/constants/siteMeta';
@@ -19,15 +19,13 @@ export const metadata = {
 
 export default function ContactPage() {
 	return (
-		<AppWrapper>
+		<AppWrapper isSmall={false}>
 			<AppHeader />
-			<AppMain>
-				<AppBlock variant="section">
-					<AppInner>
-						<ContactForm />
-					</AppInner>
-				</AppBlock>
-			</AppMain>
+			<AppBlock variant="section">
+				<ContactForm />
+			</AppBlock>
+			<AppFooterNav />
+			<AppFooter />
 		</AppWrapper>
 	);
 }

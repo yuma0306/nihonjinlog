@@ -1,21 +1,22 @@
 @use '../../styles/use/import' as *;
 @use '../../styles/config/import' as *;
 
+.block {
+  grid-column: 1 / -1;
+  background-color: $white;
+}
+
 @include pc {
   .block {
-    background-color: $white;
-    padding: 40px;
+    padding: #{$space3}px;
     border-radius: 8px;
     box-shadow: 0 0 10px 0 $primary20;
-    margin-inline: auto;
-    width: min(100%, calc(#{$innerWidth}px + 40px));
   }
 }
 
 @include sp {
   .block {
-    background-color: $white;
-    padding: vw(20);
+    padding: vw(#{$space2});
     border-radius: vw(8);
     box-shadow: 0 0 vw(10) 0 $primary20;
   }

@@ -1,6 +1,5 @@
 import { AppFooter } from '@/components/AppFooter/AppFooter';
 import { AppHeader } from '@/components/AppHeader/AppHeader';
-import { AppMain } from '@/components/AppMain/AppMain';
 import { AppWrapper } from '@/components/AppWrapper/AppWrapper';
 import { HomeFv } from '@/components/HomeFv/HomeFv';
 import { siteConfig } from '@/constants/siteConfig';
@@ -33,13 +32,10 @@ export default async function HomePage() {
 			filters: 'isRecommend[equals]true',
 		},
 	);
-	console.log(posts);
 	return (
-		<AppWrapper>
+		<AppWrapper isSmall={false}>
 			<AppHeader isHome />
-			<AppMain>
-				<HomeFv posts={minFvPostLength ? copyPosts(posts) : posts} />
-			</AppMain>
+			<HomeFv posts={minFvPostLength ? copyPosts(posts) : posts} />
 			<AppFooter />
 		</AppWrapper>
 	);

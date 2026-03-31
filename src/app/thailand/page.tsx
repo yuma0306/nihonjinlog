@@ -2,11 +2,10 @@ import { AppBlock } from '@/components/AppBlock/AppBlock';
 import { AppBreadcrumb } from '@/components/AppBreadcrumb/AppBreadcrumb';
 import { AppCardLink } from '@/components/AppCardLink/AppCardLink';
 import { AppFooter } from '@/components/AppFooter/AppFooter';
+import { AppFooterNav } from '@/components/AppFooterNav/AppFooterNav';
 import { AppHeader } from '@/components/AppHeader/AppHeader';
-import { AppMain } from '@/components/AppMain/AppMain';
 import { AppWrapper } from '@/components/AppWrapper/AppWrapper';
 import { ArchiveList } from '@/components/ArchiveList/ArchiveList';
-import { HolizonalSpacer } from '@/components/HolizonalSpacer/HolizonalSpacer';
 import {
 	getCommonMetadata,
 	getDefaultOpenGraph,
@@ -44,34 +43,31 @@ export default async function ThailandArchivePage() {
 		},
 	];
 	return (
-		<AppWrapper>
+		<AppWrapper isSmall={false}>
 			<AppHeader />
-			<AppMain>
-				<HolizonalSpacer>
-					<AppBreadcrumb items={breadcrumbItems} />
-					<AppBlock>
-						<ArchiveList>
-							{posts.map(
-								(post) =>
-									post.eyecatch?.width &&
-									post.eyecatch?.height &&
-									post.publishedAt && (
-										<li key={post.id.toString()}>
-											<AppCardLink
-												link={siteRoutes.thailandDetail.path(post.id)}
-												image={post.eyecatch.url}
-												width={post.eyecatch.width}
-												height={post.eyecatch.height}
-												time={trimTimefromDate(post.updatedAt)}
-												title={post.title}
-											/>
-										</li>
-									),
-							)}
-						</ArchiveList>
-					</AppBlock>
-				</HolizonalSpacer>
-			</AppMain>
+			<AppBreadcrumb items={breadcrumbItems} />
+			<AppBlock>
+				<ArchiveList>
+					{posts.map(
+						(post) =>
+							post.eyecatch?.width &&
+							post.eyecatch?.height &&
+							post.publishedAt && (
+								<li key={post.id.toString()}>
+									<AppCardLink
+										link={siteRoutes.thailandDetail.path(post.id)}
+										image={post.eyecatch.url}
+										width={post.eyecatch.width}
+										height={post.eyecatch.height}
+										time={trimTimefromDate(post.updatedAt)}
+										title={post.title}
+									/>
+								</li>
+							),
+					)}
+				</ArchiveList>
+			</AppBlock>
+			<AppFooterNav />
 			<AppFooter />
 		</AppWrapper>
 	);

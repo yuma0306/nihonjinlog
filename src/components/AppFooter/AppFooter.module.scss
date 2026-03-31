@@ -1,38 +1,23 @@
 @use '../../styles/use/import' as *;
 @use '../../styles/config/import' as *;
 
+.footer {
+  grid-column: 1 / -1;
+}
+
+.copy {
+  display: block;
+  text-align: center;
+}
+
 @include pc {
-  .list {
-    display: flex;
-    gap: 20px;
-  }
-  .link {
-    font-size: 14px;
-    text-decoration: underline;
-    @include hoverOpacity
-  }
   .copy {
-    display: block;
-    text-align: center;
     font-size: 12px;
-    margin-top: 20px;
   }
 }
 
 @include sp {
-  .list {
-    display: flex;
-    gap: vw(20);
-  }
-  .link {
-    font-size: vw(12);
-    text-decoration: underline;
-    @include hoverOpacity
-  }
   .copy {
-    display: block;
-    margin-top: vw(20);
-    text-align: center;
     font-size: vw(10);
   }
 }

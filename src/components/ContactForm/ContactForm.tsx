@@ -58,7 +58,6 @@ export const ContactForm = () => {
 
 	const onSubmit = async (data: ContactFormType) => {
 		try {
-			console.log('送信データ:', data);
 			alert('お問い合わせを送信しました。ありがとうございます。');
 			reset();
 		} catch (error) {

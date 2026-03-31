@@ -1,0 +1,33 @@
+@use '../../styles/use/import' as *;
+@use '../../styles/config/import' as *;
+
+.nav {
+  grid-column: 1 / -1;
+}
+
+.list {
+  display: flex;
+}
+
+.link {
+  text-decoration: underline;
+  @include hoverOpacity
+}
+
+@include pc {
+  .list {
+    gap: #{$space3}px;
+  }
+  .link {
+    font-size: 14px;
+  }
+}
+
+@include sp {
+  .list {
+    gap: vw(#{$space3});
+  }
+  .link {
+    font-size: vw(12);
+  }
+}
