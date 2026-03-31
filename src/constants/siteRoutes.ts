@@ -10,11 +10,11 @@ export const siteRoutes = {
 		path: '/404/',
 	},
 	thailand: {
-		title: 'タイライフ',
+		title: 'タイ',
 		path: '/thailand/',
 	},
 	thailandDetail: {
-		title: 'タイライフ詳細',
+		title: 'タイ詳細',
 		path(id: MicroCMSContentId['id']) {
 			return `/thailand/${id}/`;
 		},

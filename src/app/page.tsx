@@ -1,4 +1,5 @@
 import { AppFooter } from '@/components/AppFooter/AppFooter';
+import { AppFooterNav } from '@/components/AppFooterNav/AppFooterNav';
 import { AppHeader } from '@/components/AppHeader/AppHeader';
 import { AppWrapper } from '@/components/AppWrapper/AppWrapper';
 import { HomeFv } from '@/components/HomeFv/HomeFv';
@@ -36,6 +37,7 @@ export default async function HomePage() {
 		<AppWrapper isSmall={false}>
 			<AppHeader isHome />
 			<HomeFv posts={minFvPostLength ? copyPosts(posts) : posts} />
+			<AppFooterNav />
 			<AppFooter />
 		</AppWrapper>
 	);
