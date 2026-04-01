@@ -22,22 +22,18 @@ export const AppCardLink = ({
 }: Props) => {
 	return (
 		<Link className={styles.link} href={link}>
-			<div className={styles.imageWrapper}>
-				<Image
-					className={styles.image}
-					alt={''}
-					src={image}
-					width={width}
-					height={height}
-					{...restProps}
-				/>
-			</div>
-			<div className={styles.info}>
-				<time date-time={time} className={styles.time}>
-					{time}
-				</time>
-				<p className={styles.title}>{title}</p>
-			</div>
+			<Image
+				className={styles.image}
+				alt={''}
+				src={image}
+				width={width}
+				height={height}
+				{...restProps}
+			/>
+			<time date-time={time} className={styles.time}>
+				{time}
+			</time>
+			<p className={styles.title}>{title}</p>
 		</Link>
 	);
 };

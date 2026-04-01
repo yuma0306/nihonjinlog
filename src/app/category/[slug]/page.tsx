@@ -87,7 +87,7 @@ export default async function TagArchivePage({ params }: Props) {
 		},
 	];
 	return (
-		<AppWrapper isSmall={false}>
+		<AppWrapper>
 			<AppHeader />
 			<AppBreadcrumb items={breadcrumbItems} />
 			<AppBlock>

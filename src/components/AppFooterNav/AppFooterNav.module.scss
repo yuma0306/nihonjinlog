@@ -1,12 +1,10 @@
 @use '../../styles/use/import' as *;
 @use '../../styles/config/import' as *;
 
-.nav {
-  grid-column: 1 / -1;
-}
-
 .list {
   display: flex;
+  grid-column: 1 / -1;
+  align-self: end;
 }
 
 .link {

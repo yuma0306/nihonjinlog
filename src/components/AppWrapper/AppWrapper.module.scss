@@ -6,7 +6,7 @@
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: auto auto 1fr auto auto;
   margin-inline: auto;
-  height: 100dvh;
+  min-height: 100dvh;
   width: min(100%, calc(1200px + #{$space3}px * 2));
 } 
 

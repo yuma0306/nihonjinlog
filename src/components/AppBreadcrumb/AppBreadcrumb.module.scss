@@ -5,78 +5,57 @@
   grid-column: 1 / -1;
 }
 
+.list {
+  display: flex;
+  align-items: flex-end;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.item {
+  position: relative;
+  &:not(:last-of-type)::after {
+    position: absolute;
+    top: 50%;
+    translate: 50% -50%;
+    rotate: 45deg;
+    content: "";
+  }
+  &:last-of-type {
+    flex: 1;
+  }
+}
+
+.link {
+  text-decoration: underline;
+}
+
 @include pc {
   .list {
-    display: flex;
-    align-items: flex-end;
-    column-gap: #{$space5}px;
-    overflow-x: auto;
-    white-space: nowrap;
+    column-gap: #{$space4}px;
   }
   .item {
-    position: relative;
     &:not(:last-of-type)::after {
-      position: absolute;
-      top: 13px;
-      right: -20px;
-      width: 8px;
-      height: 8px;
+      right: -#{$space2}px;
+      width: #{$space1}px;
+      height: #{$space1}px;
       border-top: 2px solid $primary;
       border-right: 2px solid $primary;
-      translate: 0 -50%;
-      rotate: 45deg;
-      content: "";
     }
-    &:last-of-type {
-      flex: 1;
-    }
-  }
-  .link {
-    line-height: 1;
-    text-decoration: underline;
-    font-size: 14px;
-    @include hoverOpacity;
-  }
-  .text {
-    line-height: 1;
-    font-size: 14px;
   }
 }
 
 @include sp {
   .list {
-    display: flex;
-    align-items: flex-end;
-    column-gap: vw(#{$space5});
-    overflow-x: auto;
-    white-space: nowrap;
+    column-gap: vw(#{$space4});
   }
   .item {
-    position: relative;
     &:not(:last-of-type)::after {
-      position: absolute;
-      top: vw(12);
-      right: vw(-18);
-      width: vw(8);
-      height: vw(8);
+      right: vw(-#{$space2});
+      width: vw(#{$space1});
+      height: vw(#{$space1});
       border-top: vw(2) solid $primary;
       border-right: vw(2) solid $primary;
-      translate: 0 -50%;
-      rotate: 45deg;
-      content: "";
     }
-    &:last-of-type {
-      flex: 1;
-    }
-  }
-  .link {
-    line-height: 1;
-    text-decoration: underline;
-    font-size: vw(12);
-    @include hoverOpacity;
-  }
-  .text {
-    line-height: 1;
-    font-size: vw(12);
   }
 }

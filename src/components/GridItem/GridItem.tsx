@@ -1,24 +1,27 @@
 import styles from './GridItem.module.scss';
 
-export const GridItem = ({
-	children,
-	startPc,
-	endPc,
-	startTab,
-	endTab,
-	startSp,
-	endSp,
-}: {
-	children: React.ReactNode;
+export type GridColumnType = Partial<{
 	startPc: number;
 	endPc: number;
 	startTab: number;
 	endTab: number;
 	startSp: number;
 	endSp: number;
-}) => {
+}>;
+
+export const GridItem = ({
+	children,
+	startPc = 1,
+	endPc = -1,
+	startTab = 1,
+	endTab = -1,
+	startSp = 1,
+	endSp = -1,
+}: {
+	children: React.ReactNode;
+} & GridColumnType) => {
 	return (
-		<main
+		<div
 			className={styles.wrapper}
 			data-start-pc={startPc}
 			data-end-pc={endPc}
@@ -28,6 +31,6 @@ export const GridItem = ({
 			data-end-sp={endSp}
 		>
 			{children}
-		</main>
+		</div>
 	);
 };

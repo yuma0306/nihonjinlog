@@ -1,9 +1,14 @@
 @use '../../styles/use/import' as *;
 @use '../../styles/config/import' as *;
 
+.wrapper {
+  display: grid;
+  grid-template-columns: subgrid;
+}
+
 @include pc {
   .wrapper {
-    @for $i from 1 through 12 {
+    @for $i from 1 through 13 {
       &[data-start-pc='#{$i}'] {
         grid-column-start: $i;
       }
@@ -11,7 +16,7 @@
     &[data-start-pc='-1'] {
       grid-column-start: -1;
     }
-    @for $i from 1 through 12 {
+    @for $i from 1 through 13 {
       &[data-end-pc='#{$i}'] {
         grid-column-end: $i;
       }
@@ -24,7 +29,7 @@
 
 @include tab {
   .wrapper {
-    @for $i from 1 through 12 {
+    @for $i from 1 through 13 {
       &[data-start-tab='#{$i}'] {
         grid-column-start: $i;
       }
@@ -32,7 +37,7 @@
     &[data-start-tab='-1'] {
       grid-column-start: -1;
     }
-    @for $i from 1 through 12 {
+    @for $i from 1 through 13 {
       &[data-end-tab='#{$i}'] {
         grid-column-end: $i;
       }
@@ -45,7 +50,7 @@
 
 @include sp {
   .wrapper {
-    @for $i from 1 through 12 {
+    @for $i from 1 through 13 {
       &[data-start-sp='#{$i}'] {
         grid-column-start: $i;
       }
@@ -53,7 +58,7 @@
     &[data-start-sp='-1'] {
       grid-column-start: -1;
     }
-    @for $i from 1 through 12 {
+    @for $i from 1 through 13 {
       &[data-end-sp='#{$i}'] {
         grid-column-end: $i;
       }

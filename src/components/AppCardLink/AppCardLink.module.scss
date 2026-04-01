@@ -1,85 +1,75 @@
 @use '../../styles/use/import' as *;
 @use '../../styles/config/import' as *;
 
+.link {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-rows: auto auto 1fr;
+  background-color: $white;
+  overflow: hidden;
+}
+
+.image {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+}
+
+.time {
+  display: block;
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+}
+
+.title {
+  font-weight: $fwMedium;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  grid-column: 1 / -1;
+  grid-row: 3 / 4;
+}
+
 @include pc {
   .link {
-    display: flex;
-    gap: 10px;
-    &:hover {
-      opacity: $opacity;
-      .image {
-        scale: $scale;
-      }
-    }
-  }
-  .imageWrapper {
-    overflow: hidden;
-    flex: 1;
-  }
-  .image {
-    aspect-ratio: 16 / 9;
-    width: 100%;
-    transition: scale $transition, opacity $transition;
-  }
-  .info {
-    display: grid;
-    row-gap: 8px;
-    align-self: start;
-    flex: 1;
+    gap: #{$space1}px;
+    padding-bottom: #{$space2}px;
+    grid-column: span 4;
+    box-shadow: 0 0 #{$space2} 0 $primary20;
+    border-radius: #{$space1}px;
   }
   .time {
-    display: block;
+    padding-inline: #{$space2}px;
     font-size: 12px;
-    margin-top: hl();
-    line-height: 1;
   }
   .title {
+    padding-inline: #{$space2}px;
     font-size: 16px;
-    font-weight: $fwMedium;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
-    overflow: hidden;
+  }
+}
+
+@include tab {
+  .link {
+    grid-column: span 6;
   }
 }
 
 @include sp {
   .link {
-    display: flex;
-    gap: vw(10);
-    &:hover {
-      opacity: $opacity;
-      .image {
-        scale: $scale;
-      }
-    }
-  }
-  .imageWrapper {
-    overflow: hidden;
-    flex: 1;
-  }
-  .image {
-    aspect-ratio: 16 / 9;
-    width: 100%;
-    transition: scale $transition, opacity $transition;
-  }
-  .info {
-    display: grid;
-    row-gap: vw(8);
-    align-self: start;
-    flex: 1;
+    gap: vw(#{$space1});
+    padding-bottom: vw(#{$space2});
+    grid-column: span 12;
+    box-shadow: 0 0 vw(#{$space2}) 0 $primary20;
+    border-radius: vw(#{$space1});
   }
   .time {
-    display: block;
+    padding-inline: vw(#{$space2});
     font-size: vw(10);
-    margin-top: hl();
-    line-height: 1;
   }
   .title {
-    font-weight: $fwMedium;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
+    padding-inline: vw(#{$space2});
+    font-size: vw(16);
   }
 }

@@ -89,16 +89,9 @@ export default async function BlogDetailPage({ params }: Props) {
 
 	return (
 		<AppWrapper>
-			<AppHeader />
-			<AppBreadcrumb items={breadcrumbItems} />
-			<GridItem
-				startPc={2}
-				endPc={12}
-				startTab={1}
-				endTab={-1}
-				startSp={1}
-				endSp={-1}
-			>
+			<AppHeader startPc={2} endPc={12} />
+			<AppBreadcrumb items={breadcrumbItems} startPc={2} endPc={12} />
+			<GridItem startPc={2} endPc={12}>
 				<AppBlock>
 					<AppGrid as="div">
 						<ArticleHead
@@ -112,8 +105,8 @@ export default async function BlogDetailPage({ params }: Props) {
 					</AppGrid>
 				</AppBlock>
 			</GridItem>
-			<AppFooterNav />
-			<AppFooter />
+			<AppFooterNav startPc={2} endPc={12} />
+			<AppFooter startPc={2} endPc={12} />
 		</AppWrapper>
 	);
 }

@@ -1,27 +1,24 @@
 @use '../../styles/use/import' as *;
 @use '../../styles/config/import' as *;
 
+$maxWidth: 640px;
+
+.articleBody {
+  display: grid;
+}
+
+@include pc { 
+  .articleBody {
+    row-gap: #{$space3}px;
+  }
+}
+
 @include pc {
   .articleBody {
-    &:not(#_) > *:first-child {
-      margin-top: 0;
-    }
-    h2, h3, h4, h5, h6 {
-      font-weight: $fwMedium;
-      &:not(#_) {
-        & + * {
-          margin-top: 20px;
-        }
-      }
-    }
-    p, ol, ul, img {
-      margin-top: 20px;
-    }
     h2 {
-      margin-top: 50px;
       position: relative;
+      padding-block: #{$space3}px #{$space1}px;
       border-bottom: 2px solid $primary10;
-      padding-bottom: 10px;
       font-size: 24px;
       &::before {
         position: absolute;
@@ -31,48 +28,47 @@
         height: 2px;
         background-color: $primary;
         content: "";
-        transform: translateY(100%);
+        translate: 0 100%;
       }
     }
     h3 {
+      padding: #{$space2}px 0 0 #{$space2}px;
       position: relative;
-      margin-top: 40px;
-      padding-left: 20px;
       font-size: 22px;
       &::before {
         position: absolute;
-        top: 4px;
+        top: calc(#{$space2}px + 4px);
         left: 0;
         width: 2px;
-        height: 24px;
+        height: #{$space3}px;
         background-color: $primary;
         content: "";
       }
     }
     ul {
       display: grid;
-      row-gap: 10px;
+      row-gap: #{$space1}px;
       position: relative;
-      padding: 20px;
+      padding: #{$space3}px;
       background-color: $primary10;
       &::before {
         position: absolute;
         content: "";
         right: 0;
         top: 0;
-        border-width: 0 24px 24px 0;
+        border-width: 0 #{$space3}px #{$space3}px 0;
         border-style: solid;
         border-color: $primary20 $white $primary20;
       }
       li {
         position: relative;
-        padding-left: 20px;
+        padding-left: #{$space3}px;
         &::before {
           position: absolute;
-          top: .1em;
+          top: calc(#{$space1}px * .4);
           left: 0;
-          transform: translateY(50%);
-          width: 10px;
+          translate: 0 50%;
+          width: #{$space1}px;
           aspect-ratio: 1;
           background: $primary;
           border-radius: 50%;
@@ -83,31 +79,31 @@
     ol {
       position: relative;
       display: grid;
-      gap: 15px;
+      gap: #{$space2}px;
       background-color: $primary10;
-      padding: 20px;
+      padding: #{$space3}px;
       counter-reset: number 0;
       &::before {
         position: absolute;
         content: "";
         right: 0;
         top: 0;
-        border-width: 0 24px 24px 0;
+        border-width: 0 #{$space3}px #{$space3}px 0;
         border-style: solid;
         border-color: $primary20 $white $primary20;
       }
       li {
         position: relative;
-        padding-left: 30px;
+        padding-left: #{$space3}px;
         &::before {
           display: grid;
           place-content: center;
           position: absolute;
-          top: -.8em;
+          top: calc(#{$space2}px * -.8);
           left: 0;
           line-height: 1;
           translate: 0 50%;
-          width: 24px;
+          width: #{$space3}px;
           aspect-ratio: 1;
           padding-bottom: 2px;
           border-radius: 50%;
@@ -126,14 +122,14 @@
     }
     img {
       display: block;
-      width: min(100%, 640px);
+      width: min(100%, #{$maxWidth});
       margin-inline: auto;
     }
     div {
       &:has(iframe) {
-        margin: 20px auto 0!important;
+        margin: 0 auto!important;
         display: block!important;
-        width: min(100%, 640px)!important;
+        width: min(100%, #{$maxWidth})!important;
         aspect-ratio: 16 / 9!important;
         left: auto!important;
         height: auto!important;
@@ -152,22 +148,7 @@
 
 @include sp {
   .articleBody {
-    &:not(#_) > *:first-child {
-      margin-top: 0;
-    }
-    h2, h3, h4, h5, h6 {
-      font-weight: $fwMedium;
-      &:not(#_) {
-        & + * {
-          margin-top: vw(20);
-        }
-      }
-    }
-    p, ol, ul {
-      margin-top: vw(20);
-    }
     h2 {
-      margin-top: vw(50);
       position: relative;
       border-bottom: vw(2) solid $primary10;
       padding-bottom: vw(10);
@@ -185,7 +166,6 @@
     }
     h3 {
       position: relative;
-      margin-top: vw(40);
       padding-left: vw(20);
       font-size: vw(20);
       &::before {

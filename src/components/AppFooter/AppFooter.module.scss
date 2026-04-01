@@ -2,6 +2,7 @@
 @use '../../styles/config/import' as *;
 
 .footer {
+  display: grid;
   grid-column: 1 / -1;
 }
 
@@ -18,6 +19,6 @@
 
 @include sp {
   .copy {
-    font-size: vw(10);
+    font-size: vw(12);
   }
 }
