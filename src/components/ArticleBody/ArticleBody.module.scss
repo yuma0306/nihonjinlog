@@ -5,44 +5,65 @@ $maxWidth: 640px;
 
 .articleBody {
   display: grid;
-}
-
-@include pc { 
-  .articleBody {
-    row-gap: #{$space3}px;
+  h2 {
+    position: relative;
+    &::before {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 10%;
+      background-color: $primary;
+      content: "";
+      translate: 0 100%;
+    }
+  }
+  h3 {
+    position: relative;
+    &::before {
+      position: absolute;
+      left: 0;
+      background-color: $primary;
+      content: "";
+    }
+  }
+  div {
+    &:has(iframe) {
+      margin: 0 auto!important;
+      display: block!important;
+      width: min(100%, #{$maxWidth})!important;
+      aspect-ratio: 16 / 9!important;
+      left: auto!important;
+      height: auto!important;
+      padding-bottom: 0!important;
+    }
+  }
+  iframe {
+    top: auto!important;
+    left: auto!important;
+    position: relative!important;
+    width: 100%!important;
+    height: 100%!important;
   }
 }
 
 @include pc {
   .articleBody {
+    row-gap: #{$space3}px;
     h2 {
-      position: relative;
       padding-block: #{$space3}px #{$space1}px;
       border-bottom: 2px solid $primary10;
-      font-size: 24px;
+      font-size: #{$fs4}px;
       &::before {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 10%;
         height: 2px;
-        background-color: $primary;
-        content: "";
-        translate: 0 100%;
       }
     }
     h3 {
       padding: #{$space2}px 0 0 #{$space2}px;
-      position: relative;
-      font-size: 22px;
+      font-size: #{$fs3}px;
       &::before {
-        position: absolute;
-        top: calc(#{$space2}px + 4px);
-        left: 0;
+        top: calc(#{$space2}px);
         width: 2px;
-        height: #{$space3}px;
-        background-color: $primary;
-        content: "";
+        height: calc(100% - #{$space2}px);
       }
     }
     ul {
@@ -124,24 +145,6 @@ $maxWidth: 640px;
       display: block;
       width: min(100%, #{$maxWidth});
       margin-inline: auto;
-    }
-    div {
-      &:has(iframe) {
-        margin: 0 auto!important;
-        display: block!important;
-        width: min(100%, #{$maxWidth})!important;
-        aspect-ratio: 16 / 9!important;
-        left: auto!important;
-        height: auto!important;
-        padding-bottom: 0!important;
-      }
-    }
-    iframe {
-      top: auto!important;
-      left: auto!important;
-      position: relative!important;
-      width: 100%!important;
-      height: 100%!important;
     }
   }
 }
@@ -252,24 +255,6 @@ $maxWidth: 640px;
       color: $primary;
       text-decoration: underline;
       @include hoverOpacity;
-    }
-    div {
-      &:has(iframe) {
-        margin: vw(20) auto 0!important;
-        display: block!important;
-        width: 100%!important;
-        aspect-ratio: 16 / 9!important;
-        left: auto!important;
-        height: auto!important;
-        padding-bottom: 0!important;
-      }
-    }
-    iframe {
-      top: auto!important;
-      left: auto!important;
-      position: relative!important;
-      width: 100%!important;
-      height: 100%!important;
     }
   }
 }

@@ -1,12 +1,10 @@
-import { AppBlock } from '@/components/AppBlock/AppBlock';
 import { AppBreadcrumb } from '@/components/AppBreadcrumb/AppBreadcrumb';
-import { AppCardLink } from '@/components/AppCardLink/AppCardLink';
 import { AppFooter } from '@/components/AppFooter/AppFooter';
 import { AppFooterNav } from '@/components/AppFooterNav/AppFooterNav';
 import { AppHeader } from '@/components/AppHeader/AppHeader';
 import { AppWrapper } from '@/components/AppWrapper/AppWrapper';
 import { ArchiveList } from '@/components/ArchiveList/ArchiveList';
-import { GridItem } from '@/components/GridItem/GridItem';
+import { HomeFvCard } from '@/components/HomeFvCard/HomeFvCard';
 import {
 	getCommonMetadata,
 	getDefaultOpenGraph,
@@ -55,7 +53,7 @@ export default async function ThailandArchivePage() {
 						return cells;
 					}
 					cells.push(
-						<AppCardLink
+						<HomeFvCard
 							key={post.id}
 							link={siteRoutes.thailandDetail.path(post.id)}
 							image={eyecatch.url}
@@ -63,6 +61,7 @@ export default async function ThailandArchivePage() {
 							height={eyecatch.height}
 							time={trimTimefromDate(post.updatedAt)}
 							title={post.title}
+							hasColumn
 						/>,
 					);
 					return cells;

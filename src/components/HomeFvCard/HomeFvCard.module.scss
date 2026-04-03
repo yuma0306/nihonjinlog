@@ -44,6 +44,9 @@
   .link {
     border-radius: #{$space1}px;
     box-shadow: 0 0 #{$space1}px 0 $primary20;;
+    &[data-has-column='true'] {
+      grid-column: span 3;
+    }
   }
   .body {
     padding: #{$space2}px;
@@ -57,10 +60,21 @@
   }
 }
 
+@include tab {
+  .link {
+    &[data-has-column='true'] {
+      grid-column: span 6;
+    }
+  }
+}
+
 @include sp {
   .link {
     border-radius: vw(#{$space1});
     box-shadow: 0 0 vw(#{$space1}) 0 $primary20;;
+    &[data-has-column='true'] {
+      grid-column: span 12;
+    }
   }
   .body {
     padding: vw(#{$space2});
