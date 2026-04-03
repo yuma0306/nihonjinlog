@@ -1,10 +1,6 @@
 @use '../../styles/use/import' as *;
 @use '../../styles/config/import' as *;
 
-// Swiper の breakpoints と同値（@/constants/media の tab / pc）
-$carouselTab: 768px;
-$carouselPc: 1024px;
-
 .fv {
   grid-column: 1 / -1;
 }
@@ -14,99 +10,45 @@ $carouselPc: 1024px;
 }
 
 .container {
-  display: flex;
-  touch-action: pan-y pinch-zoom;
-  gap: 20px;
+	display: flex;
 }
 
 .slide {
-  flex: 0 0 calc((100% - 20px) / 1.5);
-  min-width: 0;
-}
-
-@media screen and (min-width: $carouselTab) {
-  .slide {
-    flex: 0 0 calc((100% - 60px) / 3.5);
-  }
-}
-
-@media screen and (min-width: $carouselPc) {
-  .container {
-    gap: 30px;
-  }
-
-  .slide {
-    flex: 0 0 calc((100% - 90px) / 3.5);
-  }
+  display: grid;
 }
 
 @include pc {
   .fv {
-    padding-bottom: 60px;
+    margin-inline: -#{$space3}px;
   }
-
-  .slider {
-    max-width: #{$InnerWidthMax}px;
-    margin-inline: auto;
+  .container {
+    gap: #{$space3}px;
   }
-
-  .pagination {
-    gap: 14px;
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 40px;
+  .slide {
+    flex: 0 0 calc((100%) / 3.5);
+    &:last-of-type {
+      margin-right: #{$space3}px;
+    }
   }
+}
 
-  .paginationDot {
-    display: block;
-    width: 14px;
-    height: 14px;
-    padding: 0;
-    border-radius: 50%;
-    border: 1px solid $primary;
-    background-color: $white;
-    cursor: pointer;
-  }
-
-  .paginationDotActive {
-    background-color: $primary;
-    border: 1px solid $white;
+@include tab {
+  .slide {
+    flex: 0 0 calc((100%) / 2.5);
   }
 }
 
 @include sp {
   .fv {
-    padding-bottom: vw(40);
+    margin-inline: vw(-#{$space2});
   }
-
-  .slider {
-    margin-inline: auto;
+  .container {
+    gap: vw(#{$space2});
   }
-
-  .pagination {
-    gap: vw(14);
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: vw(20);
-  }
-
-  .paginationDot {
-    display: block;
-    width: vw(14);
-    height: vw(14);
-    padding: 0;
-    border-radius: 50%;
-    border: vw(1) solid $primary;
-    background: $white;
-    cursor: pointer;
-  }
-
-  .paginationDotActive {
-    background: $primary;
-    border: 1px solid $white;
+  .slide {
+    flex: 0 0 calc((100%) / 1.2);
+    &:last-of-type {
+      margin-right: vw(#{$space2});
+    }
   }
 }

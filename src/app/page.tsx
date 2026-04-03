@@ -14,8 +14,6 @@ import { endpoints, fetchList } from '@/libs/microcms';
 import type { ThailandType } from '@/libs/microcms.type';
 import type { Metadata } from 'next';
 
-const minFvPostLength = 6;
-
 export const metadata: Metadata = {
 	...getCommonMetadata(),
 	title: siteConfig.siteName,
@@ -34,18 +32,11 @@ export default async function HomePage() {
 		},
 	);
 	return (
-		<AppWrapper isSmall={false}>
+		<AppWrapper>
 			<AppHeader isHome />
-			<HomeFv posts={minFvPostLength ? copyPosts(posts) : posts} />
+			<HomeFv posts={posts} />
 			<AppFooterNav />
 			<AppFooter />
 		</AppWrapper>
 	);
-}
-
-function copyPosts(posts: ThailandType[]) {
-	if (posts.length === 0) return [];
-	if (posts.length > minFvPostLength) return posts;
-	const doubledPosts = [...posts, ...posts];
-	return copyPosts(doubledPosts);
 }

@@ -35,10 +35,10 @@ export const ArticleHead = ({
 				<ul className={styles.tags}>
 					<li className={styles.tag}>
 						<Link
-							href={siteRoutes.category.path(category.id)}
+							href={siteRoutes.category.path(category?.id)}
 							className={styles.link}
 						>
-							{category.name}
+							{category?.name}
 						</Link>
 					</li>
 				</ul>
