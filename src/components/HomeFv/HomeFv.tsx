@@ -38,6 +38,7 @@ export const HomeFv = ({ posts }: Props) => {
 									title={post.title}
 									loading="eager"
 									decoding="auto"
+									hasColumn={false}
 								/>
 							</li>
 						);

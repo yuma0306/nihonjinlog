@@ -31,6 +31,9 @@
 }
 
 @include tab {
+  .fv {
+    margin-inline: -#{$space3}px;
+  }
   .slide {
     flex: 0 0 calc((100%) / 2.5);
   }
