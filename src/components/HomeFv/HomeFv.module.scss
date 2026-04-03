@@ -18,11 +18,9 @@
 }
 
 @include pc {
-  .fv {
-    margin-inline: -#{$space3}px;
-  }
   .container {
     gap: #{$space3}px;
+    padding-block: #{$space1}px;
   }
   .slide {
     flex: 0 0 calc((100%) / 3.5);
@@ -43,6 +41,7 @@
     margin-inline: vw(-#{$space2});
   }
   .container {
+    padding-block: vw(#{$space1});
     gap: vw(#{$space2});
   }
   .slide {
