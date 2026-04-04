@@ -1,10 +1,13 @@
 @use '../../styles/use/import' as *;
 @use '../../styles/config/import' as *;
 
+.grid {
+  display: grid;
+}
+
 @include pc {
   .grid {
-    display: grid;
-    gap: 40px;
+    gap: #{$space4}px;
     &[data-col='true'] {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -21,7 +24,6 @@
 
 @include sp {
   .grid {
-    display: grid;
-    gap: vw(20);
+    gap: #{$space4}px;
   }
 }

@@ -3,7 +3,7 @@
 
 $maxWidth: 640px;
 
-.articleBody {
+.body {
   display: grid;
   h2 {
     position: relative;
@@ -26,6 +26,74 @@ $maxWidth: 640px;
       content: "";
     }
   }
+  ul {
+    display: grid;
+    position: relative;
+    background-color: $primary10;
+    &::before {
+      position: absolute;
+      content: "";
+      right: 0;
+      top: 0;
+      border-style: solid;
+      border-color: $primary20 $white $primary20;
+    }
+    li {
+      position: relative;
+      &::before {
+        position: absolute;
+        left: 0;
+        translate: 0 50%;
+        width: #{$space1}px;
+        aspect-ratio: 1;
+        background: $primary;
+        border-radius: 50%;
+        content: "";
+      }
+    }
+  }
+  ol {
+    position: relative;
+    display: grid;
+    background-color: $primary10;
+    counter-reset: number 0;
+    &::before {
+      position: absolute;
+      content: "";
+      right: 0;
+      top: 0;
+      border-style: solid;
+      border-color: $primary20 $white $primary20;
+    }
+    li {
+      position: relative;
+      &::before {
+        display: grid;
+        place-content: center;
+        position: absolute;
+        left: 0;
+        line-height: 1;
+        translate: 0 50%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: $primary;
+        color: $white;
+        font-weight: $fwMedium;
+        counter-increment: number 1;
+        content: counter(number);
+      }
+    }
+  }
+  a {
+    color: $primary;
+    text-decoration: underline;
+    @include hoverOpacity
+  }
+  img {
+    display: block;
+    width: min(100%, #{$maxWidth});
+    margin-inline: auto;
+  }
   div {
     &:has(iframe) {
       margin: 0 auto!important;
@@ -47,8 +115,8 @@ $maxWidth: 640px;
 }
 
 @include pc {
-  .articleBody {
-    row-gap: #{$space3}px;
+  .body {
+    row-gap: #{$space2}px;
     h2 {
       padding-block: #{$space3}px #{$space1}px;
       border-bottom: 2px solid $primary10;
@@ -67,194 +135,83 @@ $maxWidth: 640px;
       }
     }
     ul {
-      display: grid;
       row-gap: #{$space1}px;
-      position: relative;
       padding: #{$space3}px;
-      background-color: $primary10;
       &::before {
-        position: absolute;
-        content: "";
-        right: 0;
-        top: 0;
         border-width: 0 #{$space3}px #{$space3}px 0;
-        border-style: solid;
-        border-color: $primary20 $white $primary20;
       }
       li {
-        position: relative;
         padding-left: #{$space3}px;
         &::before {
-          position: absolute;
           top: calc(#{$space1}px * .4);
-          left: 0;
-          translate: 0 50%;
           width: #{$space1}px;
-          aspect-ratio: 1;
-          background: $primary;
-          border-radius: 50%;
-          content: "";
         }
       }
     }
     ol {
-      position: relative;
-      display: grid;
       gap: #{$space2}px;
-      background-color: $primary10;
       padding: #{$space3}px;
-      counter-reset: number 0;
       &::before {
-        position: absolute;
-        content: "";
-        right: 0;
-        top: 0;
         border-width: 0 #{$space3}px #{$space3}px 0;
-        border-style: solid;
-        border-color: $primary20 $white $primary20;
       }
       li {
-        position: relative;
         padding-left: #{$space3}px;
         &::before {
-          display: grid;
-          place-content: center;
-          position: absolute;
           top: calc(#{$space2}px * -.8);
-          left: 0;
-          line-height: 1;
-          translate: 0 50%;
           width: #{$space3}px;
-          aspect-ratio: 1;
-          padding-bottom: 2px;
-          border-radius: 50%;
-          background: $primary;
-          color: $white;
-          font-weight: $fwMedium;
-          counter-increment: number 1;
-          content: counter(number);
         }
       }
-    }
-    a {
-      color: $primary;
-      text-decoration: underline;
-      @include hoverOpacity
-    }
-    img {
-      display: block;
-      width: min(100%, #{$maxWidth});
-      margin-inline: auto;
     }
   }
 }
 
 @include sp {
-  .articleBody {
+  .body {
+    row-gap: vw(#{$space2});
     h2 {
-      position: relative;
+      padding-block: vw(#{$space3}) vw(#{$space1});
       border-bottom: vw(2) solid $primary10;
-      padding-bottom: vw(10);
-      font-size: vw(22);
+      font-size: vw($fs4);
       &::before {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 10%;
         height: vw(2);
-        background-color: $primary;
-        content: "";
-        transform: translateY(100%);
       }
     }
     h3 {
-      position: relative;
-      padding-left: vw(20);
-      font-size: vw(20);
+      padding: vw(#{$space2}) 0 0 vw(#{$space2});
+      font-size: vw(#{$fs3});
       &::before {
-        position: absolute;
-        top: vw(4);
-        left: 0;
+        top: vw(#{$space2});
         width: vw(2);
-        height: vw(24);
-        background-color: $primary;
-        content: "";
+        height: calc(100% - vw(#{$space2}));
       }
     }
     ul {
-      display: grid;
-      row-gap: vw(10);
-      position: relative;
-      padding: vw(20);
-      background-color: $primary10;
+      row-gap: vw(#{$space1});
+      padding: vw(#{$space2});
       &::before {
-        position: absolute;
-        content: "";
-        right: 0;
-        top: 0;
-        border-width: 0 vw(24) vw(24) 0;
-        border-style: solid;
-        border-color: $primary20 $white $primary20;
+        border-width: 0 vw(#{$space2}) vw(#{$space2}) 0;
       }
       li {
-        position: relative;
-        padding-left: vw(20);
+        padding-left: #{$space2}px;
         &::before {
-          position: absolute;
-          top: .1em;
-          left: 0;
-          transform: translateY(50%);
-          width: vw(10);
-          aspect-ratio: 1;
-          background: $primary;
-          border-radius: 50%;
-          content: "";
+          top: calc(vw(#{$space1}) * .4);
+          width: vw(#{$space1});
         }
       }
     }
     ol {
-      position: relative;
-      display: grid;
-      gap: vw(15);
-      background-color: $primary10;
-      padding: vw(20);
-      counter-reset: number 0;
+      gap: vw(#{$space2});
+      padding: vw(#{$space2});
       &::before {
-        position: absolute;
-        content: "";
-        right: 0;
-        top: 0;
-        border-width: 0 vw(24) vw(24) 0;
-        border-style: solid;
-        border-color: $primary20 $white $primary20;
+        border-width: 0 vw(#{$space2}) vw(#{$space2}) 0;
       }
       li {
-        position: relative;
-        padding-left: vw(30);
+        padding-left: vw(#{$space2});
         &::before {
-          display: grid;
-          place-content: center;
-          position: absolute;
-          top: -.8em;
-          left: 0;
-          line-height: 1;
-          translate: 0 50%;
-          width: vw(24);
-          aspect-ratio: 1;
-          padding-bottom: vw(2);
-          border-radius: 50%;
-          background: $primary;
-          color: $white;
-          font-weight: $fwMedium;
-          counter-increment: number 1;
-          content: counter(number);
+          top: calc(vw(#{$space2})* -.8);
+          width: vw(#{$space2});
         }
       }
-    }
-    a {
-      color: $primary;
-      text-decoration: underline;
-      @include hoverOpacity;
     }
   }
 }

@@ -9,7 +9,7 @@ export type InfoType = MicroCMSListContent & {
 };
 
 export type CategoryType = MicroCMSListContent & {
-	name: string;
+	categoryName: string;
 };
 
 export type ThailandType = MicroCMSListContent & {

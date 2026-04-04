@@ -86,6 +86,7 @@ export default async function BlogDetailPage({ params }: Props) {
 			link: siteRoutes.thailandDetail.path(post.id),
 		},
 	];
+	console.log(post.category);
 
 	return (
 		<AppWrapper>

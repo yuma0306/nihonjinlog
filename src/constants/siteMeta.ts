@@ -1,9 +1,9 @@
 import { siteConfig } from './siteConfig';
 
 export const siteMeta = {
-	description: `${siteConfig.siteName}ではタイでの生活について発信しています。`,
+	description: `｜${siteConfig.siteName}はタイ在住者が発信する「生き物好き×海外生活」メディアです。`,
 	titleSuffix: `｜${siteConfig.siteName}`,
-	descriptionSuffix: `${siteConfig.siteName}ではタイでの生活について発信しています。`,
+	descriptionSuffix: `｜${siteConfig.siteName}はタイ在住者が発信する「生き物好き×海外生活」メディアです。`,
 	og: {
 		image: {
 			url: '/img/og-image.png',

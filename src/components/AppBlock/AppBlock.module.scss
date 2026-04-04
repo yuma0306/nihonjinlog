@@ -10,15 +10,15 @@
 @include pc {
   .block {
     padding: #{$space3}px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px 0 $primary20;
+    border-radius: #{$space1}px;
+    box-shadow: 0 0 #{$space1} 0 $primary20;
   }
 }
 
 @include sp {
   .block {
+    margin-inline: vw(-#{$space2});
     padding: vw(#{$space2});
-    border-radius: vw(8);
-    box-shadow: 0 0 vw(10) 0 $primary20;
+    box-shadow: 0 0 vw(#{$space1}) 0 $primary20;
   }
 }
