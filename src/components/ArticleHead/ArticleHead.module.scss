@@ -1,81 +1,71 @@
 @use '../../styles/use/import' as *;
 @use '../../styles/config/import' as *;
 
+.articleHead {
+  display: grid;
+}
+
+.thumbnail {
+  display: block;
+  aspect-ratio: 16 / 9;
+  width: min(100%, 640px);
+  margin-inline: auto;
+}
+
+.category {
+  display: flex;
+  width: min(100%, 640px);
+  margin-inline: auto;
+}
+
+.categoryLink {
+  text-decoration: underline;
+  @include hoverOpacity
+}
+
+.dateWrapper {
+  display: flex;
+  place-content: center;
+}
+
+.heading {
+  text-align: center;
+}
+
 @include pc {
-  .thumbnail {
-    display: block;
-    aspect-ratio: 16 / 9;
-    width: min(100%, 640px);
-    margin: 10px auto 0;
-    animation: spiritual 8s ease-in-out infinite;
+  .articleHead {
+    row-gap: #{$space1}px;
   }
-  .tags {
-    display: flex;
-    gap: 20px;
-    width: min(100%, 640px);
-    margin: 20px auto 0;
-  }
-  .link {
-    text-decoration: underline;
-    @include hoverOpacity
+  .category {
+    gap: #{$space2}px;
   }
   .dateWrapper {
-    display: flex;
-    place-content: center;
-    gap: 10px;
+    gap: #{$space2}px;
   }
   .date {
-    font-size: 12px;
+    color: $gray;
+    font-size: #{$fs1}px;
   }
   .heading {
-    font-size: 26px;
-    text-align: center;
-    margin-top: 12px;
+    font-size: #{$fs5}px;
   }
 }
 
 @include sp {
-  .thumbnail {
-    display: block;
-    aspect-ratio: 16 / 9;
-    width: 100%;
-    margin: vw(10) auto 0;
-    animation: spiritual 8s ease-in-out infinite;
+  .articleHead {
+    row-gap: vw($space1);
   }
-  .tags {
-    display: flex;
-    gap: vw(20);
-    width: 100%;
-    margin: vw(20) auto 0;
-  }
-  .link {
-    text-decoration: underline;
-    @include hoverOpacity
+  .category {
+    gap: vw(#{$space2});
   }
   .dateWrapper {
-    display: flex;
-    place-content: center;
-    gap: vw(10);
+    gap: vw(#{$space2});
   }
   .date {
-    color: $primary;
-    font-size: vw(10);
+    color: $gray;
+    font-size: vw(#{$fs1});
   }
   .heading {
-    font-size: vw(24);
-    text-align: center;
-    margin-top: vw(10);
-  }
-}
-
-@keyframes spiritual {
-  0% {
-    filter: grayscale(0%);
-  }
-  50% {
-    filter: grayscale(50%);
-  }
-  100% {
-    filter: grayscale(0%);
+    font-size: vw(#{$fs4});
   }
 }

@@ -8,7 +8,7 @@ type Props = {
 export const ArticleBody = ({ html }: Props) => {
 	return (
 		<div
-			className={styles.articleBody}
+			className={styles.body}
 			// biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
 			dangerouslySetInnerHTML={{ __html: html }}
 		/>

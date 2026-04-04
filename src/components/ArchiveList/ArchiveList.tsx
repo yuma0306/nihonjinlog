@@ -5,5 +5,5 @@ type Props = {
 };
 
 export const ArchiveList = ({ children }: Props) => {
-	return <ul className={styles.list}>{children}</ul>;
+	return <div className={styles.list}>{children}</div>;
 };

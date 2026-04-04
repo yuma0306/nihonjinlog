@@ -9,6 +9,7 @@ type Props = {
 	height: number;
 	time: string;
 	title: string;
+	hasColumn: boolean;
 } & Omit<ImageProps, 'src' | 'width' | 'height' | 'alt'>;
 
 export const HomeFvCard = ({
@@ -18,10 +19,11 @@ export const HomeFvCard = ({
 	height,
 	time,
 	title,
+	hasColumn,
 	...restProps
 }: Props) => {
 	return (
-		<Link className={styles.link} href={link}>
+		<Link className={styles.link} href={link} data-has-column={hasColumn}>
 			<div className={styles.imageWrapper}>
 				<Image
 					className={styles.image}

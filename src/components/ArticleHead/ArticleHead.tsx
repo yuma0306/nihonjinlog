@@ -32,13 +32,13 @@ export const ArticleHead = ({
 			</div>
 			<h1 className={styles.heading}>{title}</h1>
 			{category !== undefined && (
-				<ul className={styles.tags}>
-					<li className={styles.tag}>
+				<ul className={styles.category}>
+					<li className={styles.categoryItem}>
 						<Link
-							href={siteRoutes.category.path(category.id)}
-							className={styles.link}
+							href={siteRoutes.category.path(category?.id)}
+							className={styles.categoryLink}
 						>
-							{category.name}
+							{category?.categoryName}
 						</Link>
 					</li>
 				</ul>

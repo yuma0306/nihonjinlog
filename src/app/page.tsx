@@ -1,6 +1,6 @@
 import { AppFooter } from '@/components/AppFooter/AppFooter';
+import { AppFooterNav } from '@/components/AppFooterNav/AppFooterNav';
 import { AppHeader } from '@/components/AppHeader/AppHeader';
-import { AppMain } from '@/components/AppMain/AppMain';
 import { AppWrapper } from '@/components/AppWrapper/AppWrapper';
 import { HomeFv } from '@/components/HomeFv/HomeFv';
 import { siteConfig } from '@/constants/siteConfig';
@@ -13,8 +13,6 @@ import { siteRoutes } from '@/constants/siteRoutes';
 import { endpoints, fetchList } from '@/libs/microcms';
 import type { ThailandType } from '@/libs/microcms.type';
 import type { Metadata } from 'next';
-
-const minFvPostLength = 6;
 
 export const metadata: Metadata = {
 	...getCommonMetadata(),
@@ -33,21 +31,12 @@ export default async function HomePage() {
 			filters: 'isRecommend[equals]true',
 		},
 	);
-	console.log(posts);
 	return (
 		<AppWrapper>
 			<AppHeader isHome />
-			<AppMain>
-				<HomeFv posts={minFvPostLength ? copyPosts(posts) : posts} />
-			</AppMain>
+			<HomeFv posts={posts} />
+			<AppFooterNav />
 			<AppFooter />
 		</AppWrapper>
 	);
-}
-
-function copyPosts(posts: ThailandType[]) {
-	if (posts.length === 0) return [];
-	if (posts.length > minFvPostLength) return posts;
-	const doubledPosts = [...posts, ...posts];
-	return copyPosts(doubledPosts);
 }

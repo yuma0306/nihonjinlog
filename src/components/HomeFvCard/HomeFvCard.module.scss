@@ -1,80 +1,89 @@
 @use '../../styles/use/import' as *;
 @use '../../styles/config/import' as *;
 
-@include pc {
-  .link {
-    display: block;
-    background-color: $white;
-    box-shadow: 0 0 4px 4px $primary10;
-    &:hover {
-      opacity: $opacity;
-      .image {
-        scale: $scale;
-      }
+.link {
+  display: block;
+  background-color: $white;
+  overflow: hidden;
+  &:hover {
+    opacity: $opacity;
+    .image {
+      scale: $scale;
     }
   }
-  .imageWrapper {
-    overflow: hidden;
-  }
-  .image {
-    aspect-ratio: 16 / 9;
-    width: 100%;
-    transition: scale $transition, opacity $transition;
+}
+
+.imageWrapper {
+  overflow: hidden;
+}
+
+.image {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  transition: scale $transition, opacity $transition;
+}
+
+.body {
+  display: grid;
+}
+
+.time {
+  display: block;
+  color: $gray;
+}
+
+.title {
+  font-weight: $fwMedium;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+@include pc {
+  .link {
+    border-radius: #{$space1}px;
+    box-shadow: 0 0 #{$space1}px 0 $primary20;;
+    &[data-has-column='true'] {
+      grid-column: span 3;
+    }
   }
   .body {
-    padding: 20px;
-    display: grid;
-    row-gap: 5px;
+    padding: #{$space2}px;
+    gap: #{$space1}px;
   }
   .time {
-    display: block;
-    font-size: 12px;
+    font-size: #{$fs1}px;
   }
   .title {
-    font-size: 18px;
-    font-weight: $fwMedium;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
+    font-size: #{$fs2}px;
+  }
+}
+
+@include tab {
+  .link {
+    &[data-has-column='true'] {
+      grid-column: span 6;
+    }
   }
 }
 
 @include sp {
   .link {
-    display: block;
-    background-color: $white;
-    box-shadow: 0 0 vw(4) vw(4) $primary10;
-    &:hover {
-      opacity: $opacity;
-      .image {
-        scale: $scale;
-      }
+    border-radius: vw(#{$space1});
+    box-shadow: 0 0 vw(#{$space1}) 0 $primary20;;
+    &[data-has-column='true'] {
+      grid-column: span 12;
     }
   }
-  .imageWrapper {
-    overflow: hidden;
-  }
-  .image {
-    aspect-ratio: 16 / 9;
-    width: 100%;
-    transition: scale $transition, opacity $transition;
-  }
   .body {
-    padding: vw(14);
-    display: grid;
-    row-gap: vw(4);
+    padding: vw(#{$space2});
+    gap: vw(#{$space1});
   }
   .time {
-    display: block;
-    font-size: vw(10);
+    font-size: vw(#{$fs1});
   }
   .title {
-    font-size: vw(16);
-    font-weight: $fwMedium;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
+    font-size: vw(#{$fs2});
   }
 }

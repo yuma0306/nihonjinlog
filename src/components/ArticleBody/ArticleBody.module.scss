@@ -1,295 +1,217 @@
 @use '../../styles/use/import' as *;
 @use '../../styles/config/import' as *;
 
-@include pc {
-  .articleBody {
-    &:not(#_) > *:first-child {
-      margin-top: 0;
+$maxWidth: 640px;
+
+.body {
+  display: grid;
+  h2 {
+    position: relative;
+    &::before {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 10%;
+      background-color: $primary;
+      content: "";
+      translate: 0 100%;
     }
-    h2, h3, h4, h5, h6 {
-      font-weight: $fwMedium;
-      &:not(#_) {
-        & + * {
-          margin-top: 20px;
-        }
-      }
+  }
+  h3 {
+    position: relative;
+    &::before {
+      position: absolute;
+      left: 0;
+      background-color: $primary;
+      content: "";
     }
-    p, ol, ul, img {
-      margin-top: 20px;
+  }
+  ul {
+    display: grid;
+    position: relative;
+    background-color: $primary10;
+    &::before {
+      position: absolute;
+      content: "";
+      right: 0;
+      top: 0;
+      border-style: solid;
+      border-color: $primary20 $white $primary20;
     }
-    h2 {
-      margin-top: 50px;
+    li {
       position: relative;
-      border-bottom: 2px solid $primary10;
-      padding-bottom: 10px;
-      font-size: 24px;
       &::before {
         position: absolute;
-        bottom: 0;
         left: 0;
-        width: 10%;
-        height: 2px;
-        background-color: $primary;
+        translate: 0 50%;
+        width: #{$space1}px;
+        aspect-ratio: 1;
+        background: $primary;
+        border-radius: 50%;
         content: "";
-        transform: translateY(100%);
+      }
+    }
+  }
+  ol {
+    position: relative;
+    display: grid;
+    background-color: $primary10;
+    counter-reset: number 0;
+    &::before {
+      position: absolute;
+      content: "";
+      right: 0;
+      top: 0;
+      border-style: solid;
+      border-color: $primary20 $white $primary20;
+    }
+    li {
+      position: relative;
+      &::before {
+        display: grid;
+        place-content: center;
+        position: absolute;
+        left: 0;
+        line-height: 1;
+        translate: 0 50%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: $primary;
+        color: $white;
+        font-weight: $fwMedium;
+        counter-increment: number 1;
+        content: counter(number);
+      }
+    }
+  }
+  a {
+    color: $primary;
+    text-decoration: underline;
+    @include hoverOpacity
+  }
+  img {
+    display: block;
+    width: min(100%, #{$maxWidth});
+    margin-inline: auto;
+  }
+  div {
+    &:has(iframe) {
+      margin: 0 auto!important;
+      display: block!important;
+      width: min(100%, #{$maxWidth})!important;
+      aspect-ratio: 16 / 9!important;
+      left: auto!important;
+      height: auto!important;
+      padding-bottom: 0!important;
+    }
+  }
+  iframe {
+    top: auto!important;
+    left: auto!important;
+    position: relative!important;
+    width: 100%!important;
+    height: 100%!important;
+  }
+}
+
+@include pc {
+  .body {
+    row-gap: #{$space2}px;
+    h2 {
+      padding-block: #{$space3}px #{$space1}px;
+      border-bottom: 2px solid $primary10;
+      font-size: #{$fs4}px;
+      &::before {
+        height: 2px;
       }
     }
     h3 {
-      position: relative;
-      margin-top: 40px;
-      padding-left: 20px;
-      font-size: 22px;
+      padding: #{$space2}px 0 0 #{$space2}px;
+      font-size: #{$fs3}px;
       &::before {
-        position: absolute;
-        top: 4px;
-        left: 0;
+        top: calc(#{$space2}px);
         width: 2px;
-        height: 24px;
-        background-color: $primary;
-        content: "";
+        height: calc(100% - #{$space2}px);
       }
     }
     ul {
-      display: grid;
-      row-gap: 10px;
-      position: relative;
-      padding: 20px;
-      background-color: $primary10;
+      row-gap: #{$space1}px;
+      padding: #{$space3}px;
       &::before {
-        position: absolute;
-        content: "";
-        right: 0;
-        top: 0;
-        border-width: 0 24px 24px 0;
-        border-style: solid;
-        border-color: $primary20 $white $primary20;
+        border-width: 0 #{$space3}px #{$space3}px 0;
       }
       li {
-        position: relative;
-        padding-left: 20px;
+        padding-left: #{$space3}px;
         &::before {
-          position: absolute;
-          top: .1em;
-          left: 0;
-          transform: translateY(50%);
-          width: 10px;
-          aspect-ratio: 1;
-          background: $primary;
-          border-radius: 50%;
-          content: "";
+          top: calc(#{$space1}px * .4);
+          width: #{$space1}px;
         }
       }
     }
     ol {
-      position: relative;
-      display: grid;
-      gap: 15px;
-      background-color: $primary10;
-      padding: 20px;
-      counter-reset: number 0;
+      gap: #{$space2}px;
+      padding: #{$space3}px;
       &::before {
-        position: absolute;
-        content: "";
-        right: 0;
-        top: 0;
-        border-width: 0 24px 24px 0;
-        border-style: solid;
-        border-color: $primary20 $white $primary20;
+        border-width: 0 #{$space3}px #{$space3}px 0;
       }
       li {
-        position: relative;
-        padding-left: 30px;
+        padding-left: #{$space3}px;
         &::before {
-          display: grid;
-          place-content: center;
-          position: absolute;
-          top: -.8em;
-          left: 0;
-          line-height: 1;
-          translate: 0 50%;
-          width: 24px;
-          aspect-ratio: 1;
-          padding-bottom: 2px;
-          border-radius: 50%;
-          background: $primary;
-          color: $white;
-          font-weight: $fwMedium;
-          counter-increment: number 1;
-          content: counter(number);
+          top: calc(#{$space2}px * -.8);
+          width: #{$space3}px;
         }
       }
-    }
-    a {
-      color: $primary;
-      text-decoration: underline;
-      @include hoverOpacity
-    }
-    img {
-      display: block;
-      width: min(100%, 640px);
-      margin-inline: auto;
-    }
-    div {
-      &:has(iframe) {
-        margin: 20px auto 0!important;
-        display: block!important;
-        width: min(100%, 640px)!important;
-        aspect-ratio: 16 / 9!important;
-        left: auto!important;
-        height: auto!important;
-        padding-bottom: 0!important;
-      }
-    }
-    iframe {
-      top: auto!important;
-      left: auto!important;
-      position: relative!important;
-      width: 100%!important;
-      height: 100%!important;
     }
   }
 }
 
 @include sp {
-  .articleBody {
-    &:not(#_) > *:first-child {
-      margin-top: 0;
-    }
-    h2, h3, h4, h5, h6 {
-      font-weight: $fwMedium;
-      &:not(#_) {
-        & + * {
-          margin-top: vw(20);
-        }
-      }
-    }
-    p, ol, ul {
-      margin-top: vw(20);
-    }
+  .body {
+    row-gap: vw(#{$space2});
     h2 {
-      margin-top: vw(50);
-      position: relative;
+      padding-block: vw(#{$space3}) vw(#{$space1});
       border-bottom: vw(2) solid $primary10;
-      padding-bottom: vw(10);
-      font-size: vw(22);
+      font-size: vw($fs4);
       &::before {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 10%;
         height: vw(2);
-        background-color: $primary;
-        content: "";
-        transform: translateY(100%);
       }
     }
     h3 {
-      position: relative;
-      margin-top: vw(40);
-      padding-left: vw(20);
-      font-size: vw(20);
+      padding: vw(#{$space2}) 0 0 vw(#{$space2});
+      font-size: vw(#{$fs3});
       &::before {
-        position: absolute;
-        top: vw(4);
-        left: 0;
+        top: vw(#{$space2});
         width: vw(2);
-        height: vw(24);
-        background-color: $primary;
-        content: "";
+        height: calc(100% - vw(#{$space2}));
       }
     }
     ul {
-      display: grid;
-      row-gap: vw(10);
-      position: relative;
-      padding: vw(20);
-      background-color: $primary10;
+      row-gap: vw(#{$space1});
+      padding: vw(#{$space2});
       &::before {
-        position: absolute;
-        content: "";
-        right: 0;
-        top: 0;
-        border-width: 0 vw(24) vw(24) 0;
-        border-style: solid;
-        border-color: $primary20 $white $primary20;
+        border-width: 0 vw(#{$space2}) vw(#{$space2}) 0;
       }
       li {
-        position: relative;
-        padding-left: vw(20);
+        padding-left: #{$space2}px;
         &::before {
-          position: absolute;
-          top: .1em;
-          left: 0;
-          transform: translateY(50%);
-          width: vw(10);
-          aspect-ratio: 1;
-          background: $primary;
-          border-radius: 50%;
-          content: "";
+          top: calc(vw(#{$space1}) * .4);
+          width: vw(#{$space1});
         }
       }
     }
     ol {
-      position: relative;
-      display: grid;
-      gap: vw(15);
-      background-color: $primary10;
-      padding: vw(20);
-      counter-reset: number 0;
+      gap: vw(#{$space2});
+      padding: vw(#{$space2});
       &::before {
-        position: absolute;
-        content: "";
-        right: 0;
-        top: 0;
-        border-width: 0 vw(24) vw(24) 0;
-        border-style: solid;
-        border-color: $primary20 $white $primary20;
+        border-width: 0 vw(#{$space2}) vw(#{$space2}) 0;
       }
       li {
-        position: relative;
-        padding-left: vw(30);
+        padding-left: vw(#{$space2});
         &::before {
-          display: grid;
-          place-content: center;
-          position: absolute;
-          top: -.8em;
-          left: 0;
-          line-height: 1;
-          translate: 0 50%;
-          width: vw(24);
-          aspect-ratio: 1;
-          padding-bottom: vw(2);
-          border-radius: 50%;
-          background: $primary;
-          color: $white;
-          font-weight: $fwMedium;
-          counter-increment: number 1;
-          content: counter(number);
+          top: calc(vw(#{$space2})* -.8);
+          width: vw(#{$space2});
         }
       }
-    }
-    a {
-      color: $primary;
-      text-decoration: underline;
-      @include hoverOpacity;
-    }
-    div {
-      &:has(iframe) {
-        margin: vw(20) auto 0!important;
-        display: block!important;
-        width: 100%!important;
-        aspect-ratio: 16 / 9!important;
-        left: auto!important;
-        height: auto!important;
-        padding-bottom: 0!important;
-      }
-    }
-    iframe {
-      top: auto!important;
-      left: auto!important;
-      position: relative!important;
-      width: 100%!important;
-      height: 100%!important;
     }
   }
 }
