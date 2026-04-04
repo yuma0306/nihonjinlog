@@ -38,7 +38,7 @@ export const ArticleHead = ({
 							href={siteRoutes.category.path(category?.id)}
 							className={styles.categoryLink}
 						>
-							#{category.categoryName}
+							{category?.categoryName}
 						</Link>
 					</li>
 				</ul>
