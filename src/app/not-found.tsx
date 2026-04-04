@@ -39,7 +39,7 @@ export default function NotFoundPage() {
 		},
 	];
 	return (
-		<AppWrapper isSmall>
+		<AppWrapper>
 			<AppHeader />
 			<AppBreadcrumb items={breadcrumbItems} />
 			<AppBlock>
