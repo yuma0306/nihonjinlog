@@ -13,14 +13,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			url: `${siteConfig.baseUrl}/`,
 			lastModified: toSitemapDate(new Date()),
 		},
-	];
+	] as const;
+
+	const thailandArchives = [
+		{
+			url: `${siteConfig.baseUrl}${siteRoutes.thailand.path}`,
+			lastModified: toSitemapDate(new Date()),
+		},
+	] as const;
 
 	const { contents: thailandPosts } = await fetchList<BlogsType>(
 		endpoints.blogs,
+		{ filters: 'directory[equals]thailand' },
 	);
 	const thailandPostUrls = thailandPosts.map((thailandPost) => {
 		return {
 			url: `${siteConfig.baseUrl}${siteRoutes.thailandDetail.path(thailandPost.id)}`,
+			lastModified: toSitemapDate(thailandPost.updatedAt),
+		};
+	});
+
+	const { contents: infoPosts } = await fetchList<BlogsType>(endpoints.blogs, {
+		filters: 'directory[equals]info',
+	});
+	const infoPostUrls = infoPosts.map((thailandPost) => {
+		return {
+			url: `${siteConfig.baseUrl}${siteRoutes.infoDetail.path(thailandPost.id)}`,
 			lastModified: toSitemapDate(thailandPost.updatedAt),
 		};
 	});
@@ -31,9 +49,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const categoryUrls = categories.map((category) => {
 		return {
 			url: `${siteConfig.baseUrl}${siteRoutes.category.path(category.id)}`,
-			lastModified: toSitemapDate(category.updatedAt),
+			lastModified: toSitemapDate(new Date()),
 		};
 	});
 
-	return [...routes, ...thailandPostUrls];
+	return [
+		...routes,
+		...thailandArchives,
+		...thailandPostUrls,
+		...infoPostUrls,
+		...categoryUrls,
+	];
 }

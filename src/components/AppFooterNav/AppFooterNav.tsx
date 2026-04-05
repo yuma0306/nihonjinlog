@@ -23,7 +23,7 @@ export const AppFooterNav = async ({
 		},
 		...posts.map((post) => ({
 			title: post.title,
-			href: `${siteRoutes.info.path}${post.id}/`,
+			href: `${siteRoutes.infoDetail.path(post.id)}`,
 		})),
 	];
 	return (

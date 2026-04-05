@@ -25,10 +25,6 @@ export const siteRoutes = {
 			return `/category/${id}/`;
 		},
 	},
-	info: {
-		title: 'お知らせ一覧',
-		path: '/info/',
-	},
 	infoDetail: {
 		title: 'お知らせ詳細',
 		path(id: MicroCMSContentId['id']) {

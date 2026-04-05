@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		description: post.description + siteMeta.descriptionSuffix,
 		openGraph: getDefaultOpenGraph(),
 		alternates: {
-			canonical: `${siteRoutes.info.path}${post.id}/`,
+			canonical: `${siteRoutes.infoDetail.path(post.id)}`,
 		},
 		robots: {
 			index: !post.noindex,
