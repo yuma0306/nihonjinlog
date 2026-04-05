@@ -24,16 +24,32 @@ export const metadata: Metadata = {
 	},
 };
 
+export const jsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'WebSite',
+	name: siteConfig.siteName,
+	url: siteConfig.baseUrl,
+};
+
 export default async function HomePage() {
 	const { contents: posts } = await fetchList<BlogsType>(endpoints.blogs, {
 		filters: 'isRecommend[equals]true[and]directory[equals]thailand',
 	});
 	return (
-		<AppWrapper>
-			<AppHeader isHome />
-			<HomeFv posts={posts} />
-			<AppFooterNav />
-			<AppFooter />
-		</AppWrapper>
+		<>
+			<script
+				type="application/ld+json"
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+				}}
+			/>
+			<AppWrapper>
+				<AppHeader isHome />
+				<HomeFv posts={posts} />
+				<AppFooterNav />
+				<AppFooter />
+			</AppWrapper>
+		</>
 	);
 }
