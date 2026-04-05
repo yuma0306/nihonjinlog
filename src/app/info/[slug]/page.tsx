@@ -42,7 +42,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { slug } = await params;
-	const post = await fetchListDetail<BlogsType>(endpoints.directories, slug);
+	const post = await fetchListDetail<BlogsType>(endpoints.blogs, slug);
 	!post && notFound();
 
 	return {
