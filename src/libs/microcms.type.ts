@@ -1,10 +1,10 @@
 import type { MicroCMSImage, MicroCMSListContent } from 'microcms-js-sdk';
 
-export type DirectoriesType = MicroCMSListContent & {
+type DirectoriesType = MicroCMSListContent & {
 	directory: string;
 };
 
-export type CategoriesType = MicroCMSListContent & {
+type CategoriesType = MicroCMSListContent & {
 	category: string;
 };
 
