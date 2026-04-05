@@ -4,7 +4,7 @@ type DirectoriesType = MicroCMSListContent & {
 	directory: string;
 };
 
-type CategoriesType = MicroCMSListContent & {
+export type CategoriesType = MicroCMSListContent & {
 	category: string;
 };
 
