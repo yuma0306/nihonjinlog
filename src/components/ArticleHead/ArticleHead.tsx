@@ -1,17 +1,18 @@
 import styles from '@/components/ArticleHead/ArticleHead.module.scss';
 import { siteRoutes } from '@/constants/siteRoutes';
 import { trimTimefromDate } from '@/functions/date';
-import type { ThailandType } from '@/libs/microcms.type';
+import type { BlogsType } from '@/libs/microcms.type';
 import Image from 'next/image';
 import Link from 'next/link';
 
 type Props = {
-	title: ThailandType['title'];
-	createdAt: ThailandType['createdAt'];
-	updatedAt: ThailandType['updatedAt'];
-	category?: ThailandType['category'];
-	eyecatch?: ThailandType['eyecatch'];
-};
+	title: BlogsType['title'];
+	createdAt: BlogsType['createdAt'];
+	updatedAt: BlogsType['updatedAt'];
+} & Partial<{
+	category: BlogsType['category'];
+	eyecatch: BlogsType['eyecatch'];
+}>;
 
 export const ArticleHead = ({
 	title,
@@ -38,7 +39,7 @@ export const ArticleHead = ({
 							href={siteRoutes.category.path(category?.id)}
 							className={styles.categoryLink}
 						>
-							{category?.categoryName}
+							{category?.category}
 						</Link>
 					</li>
 				</ul>

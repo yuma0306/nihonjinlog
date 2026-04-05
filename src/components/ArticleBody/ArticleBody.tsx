@@ -1,8 +1,8 @@
-import type { ThailandType } from '@/libs/microcms.type';
+import type { BlogsType } from '@/libs/microcms.type';
 import styles from './ArticleBody.module.scss';
 
 type Props = {
-	html: ThailandType['content'];
+	html: BlogsType['content'];
 };
 
 export const ArticleBody = ({ html }: Props) => {
