@@ -12,17 +12,6 @@
   margin-inline: auto;
 }
 
-.category {
-  display: flex;
-  width: min(100%, 640px);
-  margin-inline: auto;
-}
-
-.categoryLink {
-  text-decoration: underline;
-  @include hoverOpacity
-}
-
 .dateWrapper {
   display: flex;
   place-content: center;
@@ -35,9 +24,6 @@
 @include pc {
   .articleHead {
     row-gap: #{$space1}px;
-  }
-  .category {
-    gap: #{$space2}px;
   }
   .dateWrapper {
     gap: #{$space2}px;
@@ -54,9 +40,6 @@
 @include sp {
   .articleHead {
     row-gap: vw($space1);
-  }
-  .category {
-    gap: vw(#{$space2});
   }
   .dateWrapper {
     gap: vw(#{$space2});

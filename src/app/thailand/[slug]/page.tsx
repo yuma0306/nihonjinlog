@@ -11,12 +11,12 @@ import { GridItem } from '@/components/GridItem/GridItem';
 import { getCommonMetadata, siteMeta } from '@/constants/siteMeta';
 import { siteRoutes } from '@/constants/siteRoutes';
 import { endpoints, fetchList, fetchListDetail } from '@/libs/microcms';
-import type { ThailandType } from '@/libs/microcms.type';
+import type { BlogsType } from '@/libs/microcms.type';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
-	const { contents } = await fetchList<ThailandType>(endpoints.thailand);
+	const { contents } = await fetchList<BlogsType>(endpoints.blogs);
 	const paths = contents.map((post) => {
 		return {
 			slug: post.id,
@@ -35,7 +35,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { slug } = await params;
-	const post = await fetchListDetail<ThailandType>(endpoints.thailand, slug);
+	const post = await fetchListDetail<BlogsType>(endpoints.blogs, slug);
 	!post && notFound();
 
 	return {
@@ -69,7 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogDetailPage({ params }: Props) {
 	const { slug } = await params;
-	const post = await fetchListDetail<ThailandType>(endpoints.thailand, slug);
+	const post = await fetchListDetail<BlogsType>(endpoints.blogs, slug);
 	!post && notFound();
 
 	const breadcrumbItems = [
@@ -86,7 +86,6 @@ export default async function BlogDetailPage({ params }: Props) {
 			link: siteRoutes.thailandDetail.path(post.id),
 		},
 	];
-	console.log(post.category);
 
 	return (
 		<AppWrapper>
@@ -100,7 +99,6 @@ export default async function BlogDetailPage({ params }: Props) {
 							updatedAt={post.updatedAt}
 							title={post.title}
 							eyecatch={post.eyecatch}
-							category={post.category}
 						/>
 						<ArticleBody html={post.content} />
 					</AppGrid>

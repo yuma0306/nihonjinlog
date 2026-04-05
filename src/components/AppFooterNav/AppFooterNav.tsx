@@ -1,6 +1,6 @@
 import { siteRoutes } from '@/constants/siteRoutes';
 import { endpoints, fetchList } from '@/libs/microcms';
-import type { InfoType } from '@/libs/microcms.type';
+import type { BlogsType } from '@/libs/microcms.type';
 import Link from 'next/link';
 import { type GridColumnType, GridItem } from '../GridItem/GridItem';
 import styles from './AppFooterNav.module.scss';
@@ -13,7 +13,9 @@ export const AppFooterNav = async ({
 	startSp,
 	endSp,
 }: GridColumnType) => {
-	const { contents: posts } = await fetchList<InfoType>(endpoints.info);
+	const { contents: posts } = await fetchList<BlogsType>(endpoints.blogs, {
+		filters: 'directory[equals]info',
+	});
 	const footerList = [
 		{
 			title: siteRoutes.contact.title,

@@ -13,7 +13,7 @@ import {
 import { siteRoutes } from '@/constants/siteRoutes';
 import { trimTimefromDate } from '@/functions/date';
 import { endpoints, fetchList } from '@/libs/microcms';
-import type { ThailandType } from '@/libs/microcms.type';
+import type { BlogsType } from '@/libs/microcms.type';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import type { ReactNode } from 'react';
@@ -29,7 +29,9 @@ export const metadata: Metadata = {
 };
 
 export default async function ThailandArchivePage() {
-	const { contents: posts } = await fetchList<ThailandType>(endpoints.thailand);
+	const { contents: posts } = await fetchList<BlogsType>(endpoints.blogs, {
+		filters: 'directory[equals]thailand',
+	});
 	posts.length === 0 && notFound();
 
 	const breadcrumbItems = [

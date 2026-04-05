@@ -1,26 +1,22 @@
 import type { MicroCMSImage, MicroCMSListContent } from 'microcms-js-sdk';
 
-export type InfoType = MicroCMSListContent & {
+export type DirectoriesType = MicroCMSListContent & {
+	directory: string;
+};
+
+export type CategoriesType = MicroCMSListContent & {
+	category: string;
+};
+
+export type BlogsType = MicroCMSListContent & {
+	directory: DirectoriesType;
 	title: string;
 	content: string;
 	description: string;
-	noindex: boolean;
-	nofollow: boolean;
-};
-
-export type CategoryType = MicroCMSListContent & {
-	categoryName: string;
-};
-
-export type ThailandType = MicroCMSListContent & {
-	title: string;
-	content: string;
-	label: string;
-	category: CategoryType;
-	recommend: boolean;
-	description: string;
+	isRecommend: boolean;
 	noindex: boolean;
 	nofollow: boolean;
 } & Partial<{
+		category: CategoriesType;
 		eyecatch: MicroCMSImage;
 	}>;
