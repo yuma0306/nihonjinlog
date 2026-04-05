@@ -11,7 +11,7 @@ import {
 } from '@/constants/siteMeta';
 import { siteRoutes } from '@/constants/siteRoutes';
 import { endpoints, fetchList } from '@/libs/microcms';
-import type { ThailandType } from '@/libs/microcms.type';
+import type { BlogsType } from '@/libs/microcms.type';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -25,12 +25,9 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-	const { contents: posts } = await fetchList<ThailandType>(
-		endpoints.thailand,
-		{
-			filters: 'isRecommend[equals]true',
-		},
-	);
+	const { contents: posts } = await fetchList<BlogsType>(endpoints.blogs, {
+		filters: 'isRecommend[equals]true[and]directory[equals]thailand',
+	});
 	return (
 		<AppWrapper>
 			<AppHeader isHome />

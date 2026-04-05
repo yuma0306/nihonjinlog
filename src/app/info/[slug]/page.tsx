@@ -15,12 +15,14 @@ import {
 } from '@/constants/siteMeta';
 import { siteRoutes } from '@/constants/siteRoutes';
 import { endpoints, fetchList, fetchListDetail } from '@/libs/microcms';
-import type { InfoType } from '@/libs/microcms.type';
+import type { BlogsType } from '@/libs/microcms.type';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next/types';
 
 export async function generateStaticParams() {
-	const { contents } = await fetchList<InfoType>(endpoints.info);
+	const { contents } = await fetchList<BlogsType>(endpoints.blogs, {
+		filters: 'directory[equals]info',
+	});
 	const paths = contents.map((post) => {
 		return {
 			slug: post.id,
@@ -40,7 +42,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { slug } = await params;
-	const post = await fetchListDetail<InfoType>(endpoints.info, slug);
+	const post = await fetchListDetail<BlogsType>(endpoints.directories, slug);
 	!post && notFound();
 
 	return {
@@ -59,8 +61,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function InfoDetailPage({ params }: Props) {
-	const post = await fetchListDetail<InfoType>(
-		endpoints.info,
+	const post = await fetchListDetail<BlogsType>(
+		endpoints.blogs,
 		(await params).slug,
 	);
 	!post && notFound();

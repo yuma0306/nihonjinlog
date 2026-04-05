@@ -9,15 +9,13 @@ import { getCommonMetadata, siteMeta } from '@/constants/siteMeta';
 import { siteRoutes } from '@/constants/siteRoutes';
 import { trimTimefromDate } from '@/functions/date';
 import { endpoints, fetchList } from '@/libs/microcms';
-import type { CategoryType, ThailandType } from '@/libs/microcms.type';
+import type { BlogsType } from '@/libs/microcms.type';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import type { ReactNode } from 'react';
 
 export async function generateStaticParams() {
-	const { contents: tags } = await fetchList<CategoryType>(
-		endpoints.categories,
-	);
+	const { contents: tags } = await fetchList<BlogsType>(endpoints.categories);
 	const paths = tags.map((tag) => {
 		return {
 			slug: tag.id,
@@ -36,7 +34,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { slug } = await params;
-	const { contents: category } = await fetchList<CategoryType>(
+	const { contents: category } = await fetchList<BlogsType>(
 		endpoints.categories,
 		{
 			filters: `id[equals]${slug}`,
@@ -44,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	);
 	category.length === 0 && notFound();
 
-	const categoryName = category[0].categoryName;
+	const categoryName = category[0].category;
 	return {
 		...getCommonMetadata(),
 		title: `${categoryName}の記事一覧${siteMeta.titleSuffix}`,
@@ -63,7 +61,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function TagArchivePage({ params }: Props) {
 	const { slug } = await params;
-	const { contents: tagContents } = await fetchList<CategoryType>(
+	const { contents: tagContents } = await fetchList<BlogsType>(
 		endpoints.categories,
 		{
 			filters: `id[equals]${slug}`,
@@ -71,7 +69,9 @@ export default async function TagArchivePage({ params }: Props) {
 	);
 	tagContents.length === 0 && notFound();
 
-	const { contents } = await fetchList<ThailandType>(endpoints.thailand);
+	const { contents } = await fetchList<BlogsType>(endpoints.blogs, {
+		filters: `category[equals]${slug}`,
+	});
 	const posts = contents.filter(
 		(item) => item.category?.id.toString() === slug,
 	);

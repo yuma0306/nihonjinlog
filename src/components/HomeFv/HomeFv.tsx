@@ -1,13 +1,13 @@
 'use client';
 
 import { siteRoutes } from '@/constants/siteRoutes';
-import type { ThailandType } from '@/libs/microcms.type';
+import type { BlogsType } from '@/libs/microcms.type';
 import useEmblaCarousel from 'embla-carousel-react';
 import { HomeFvCard } from '../HomeFvCard/HomeFvCard';
 import styles from './HomeFv.module.scss';
 
 type Props = {
-	posts: ThailandType[];
+	posts: BlogsType[];
 };
 
 export const HomeFv = ({ posts }: Props) => {
@@ -51,7 +51,7 @@ export const HomeFv = ({ posts }: Props) => {
 
 const minFvPostLength = 5;
 
-function copyPosts(posts: ThailandType[]) {
+function copyPosts(posts: BlogsType[]) {
 	if (posts.length === 0) return [];
 	if (posts.length > minFvPostLength) return posts;
 	const doubledPosts = [...posts, ...posts];
