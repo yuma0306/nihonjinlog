@@ -100,7 +100,6 @@ export default async function BlogDetailPage({ params }: Props) {
 							updatedAt={post.updatedAt}
 							title={post.title}
 							eyecatch={post.eyecatch}
-							category={post.category}
 						/>
 						<ArticleBody html={post.content} />
 					</AppGrid>

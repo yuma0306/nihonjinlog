@@ -10,7 +10,6 @@ type Props = {
 	createdAt: BlogsType['createdAt'];
 	updatedAt: BlogsType['updatedAt'];
 } & Partial<{
-	category: BlogsType['category'];
 	eyecatch: BlogsType['eyecatch'];
 }>;
 
@@ -19,7 +18,6 @@ export const ArticleHead = ({
 	createdAt,
 	updatedAt,
 	eyecatch,
-	category,
 }: Props) => {
 	return (
 		<div className={styles.articleHead}>
@@ -32,18 +30,6 @@ export const ArticleHead = ({
 				</time>
 			</div>
 			<h1 className={styles.heading}>{title}</h1>
-			{category !== undefined && (
-				<ul className={styles.category}>
-					<li className={styles.categoryItem}>
-						<Link
-							href={siteRoutes.category.path(category?.id)}
-							className={styles.categoryLink}
-						>
-							{category?.category}
-						</Link>
-					</li>
-				</ul>
-			)}
 			{eyecatch?.width && eyecatch?.height && (
 				<Image
 					className={styles.thumbnail}
