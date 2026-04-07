@@ -89,10 +89,13 @@ $maxWidth: 640px;
     text-decoration: underline;
     @include hoverOpacity
   }
-  img {
-    display: block;
+  figure {
+    display: grid;
     width: min(100%, #{$maxWidth});
     margin-inline: auto;
+  }
+  figcaption {
+    color: $gray;
   }
   div {
     &:has(iframe) {
@@ -162,6 +165,12 @@ $maxWidth: 640px;
         }
       }
     }
+    figure {
+      gap: #{$space1}px;
+    }
+    figcaption {
+      font-size: #{$fs1}px;
+    }
   }
 }
 
@@ -212,6 +221,12 @@ $maxWidth: 640px;
           width: vw(#{$space2});
         }
       }
+    }
+    figure {
+      gap: vw(#{$space1});
+    }
+    figcaption {
+      font-size: vw(#{$fs1});
     }
   }
 }
