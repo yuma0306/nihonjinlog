@@ -16,7 +16,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="ja">
+		<html lang="ja" data-scroll-behavior="smooth">
 			<GoogleTagManager gtmId={`GTM-${siteConfig.gtmId}`} />
 			<body className={`${font.className}`}>{children}</body>
 		</html>

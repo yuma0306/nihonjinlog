@@ -7,6 +7,7 @@ import { AppHeader } from '@/components/AppHeader/AppHeader';
 import { AppWrapper } from '@/components/AppWrapper/AppWrapper';
 import { ArticleBody } from '@/components/ArticleBody/ArticleBody';
 import { ArticleHead } from '@/components/ArticleHead/ArticleHead';
+import { ArticleToc } from '@/components/ArticleToc/ArticleToc';
 import { GridItem } from '@/components/GridItem/GridItem';
 import { getCommonMetadata, siteMeta } from '@/constants/siteMeta';
 import { siteRoutes } from '@/constants/siteRoutes';
@@ -100,6 +101,7 @@ export default async function BlogDetailPage({ params }: Props) {
 							title={post.title}
 							eyecatch={post.eyecatch}
 						/>
+						<ArticleToc html={post.content} />
 						<ArticleBody html={post.content} />
 					</AppGrid>
 				</AppBlock>

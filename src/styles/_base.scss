@@ -1,6 +1,10 @@
 @use "./use/import" as *;
 @use "./config/import" as *;
 
+html {
+	scroll-behavior: smooth
+}
+
 body {
 	word-break: break-all;
 	overflow-wrap: break-word;

@@ -1,9 +1,7 @@
 import styles from '@/components/ArticleHead/ArticleHead.module.scss';
-import { siteRoutes } from '@/constants/siteRoutes';
 import { trimTimefromDate } from '@/functions/date';
 import type { BlogsType } from '@/libs/microcms.type';
 import Image from 'next/image';
-import Link from 'next/link';
 
 type Props = {
 	title: BlogsType['title'];
