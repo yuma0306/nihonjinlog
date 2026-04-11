@@ -1,0 +1,99 @@
+@use '../../styles/use/import' as *;
+@use '../../styles/config/import' as *;
+
+.toc {
+	width: min(100%, 640px);
+	margin-inline: auto;
+	border: 1px solid $primary;
+	background-color: $primary10;
+}
+
+.summary {
+	text-align: center;
+	cursor: pointer;
+	font-weight: $fwMedium;
+}
+
+.nav {
+  border-top: 1px dashed $primary;
+}
+
+.list {
+	display: grid;
+	position: relative;
+	background-color: $primary10;
+}
+
+.item {
+	position: relative;
+	&::before {
+		position: absolute;
+		left: 0;
+		translate: 0 -50%;
+		width: #{$space1}px;
+		aspect-ratio: 1;
+		background: $primary;
+		border-radius: 50%;
+		content: "";
+	}
+	&[data-has-sub-list='true'] {
+		display: grid;
+	} 
+	&[data-sub-item='true'] {
+		&:before {
+			border: 1px solid $primary;
+			background-color: $white;
+		}
+	}
+}
+
+.link {
+	display: block;
+	width: fit-content;
+	text-decoration: underline $gray;
+	@include hoverOpacity;
+}
+
+@include pc {
+	.summary {
+		padding: #{$space2}px;
+	}
+	.nav {
+		padding: #{$space3}px;
+	}
+	.list {
+		row-gap: #{$space1}px;
+	}
+	.item {
+		padding-left: #{$space3}px;
+		&::before {
+			top: calc(#{$fs2}px * 1.6 / 2);
+			width: #{$space1}px;
+		}
+		&[data-has-sub-list='true'] {
+			row-gap: #{$space1}px;
+		}
+	}
+}
+
+@include sp {
+	.summary {
+		padding: vw(#{$space2});
+	}
+	.nav {
+		padding: vw(#{$space2});
+	}
+	.list {
+		row-gap: vw(#{$space1});
+	}
+	.item {
+		padding-left: vw(#{$space3});
+		&::before {
+			top: calc(vw(#{$fs2}) * 1.6 / 2);
+			width: vw(#{$space1});
+		}
+		&[data-has-sub-list='true'] {
+			row-gap: vw(#{$space1});
+		}
+	}
+}

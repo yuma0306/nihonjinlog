@@ -1,11 +1,11 @@
 import type { BlogsType } from '@/libs/microcms.type';
 import styles from './ArticleBody.module.scss';
 
-type Props = {
+export const ArticleBody = ({
+	html,
+}: {
 	html: BlogsType['content'];
-};
-
-export const ArticleBody = ({ html }: Props) => {
+}) => {
 	return (
 		<div
 			className={styles.body}
