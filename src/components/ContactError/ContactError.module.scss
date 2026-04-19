@@ -9,7 +9,7 @@
     align-items: center;
     gap: 10px;
     color: $valid;
-    font-weight: 500;
+    font-weight: $fwMedium;
     margin-left: 5px;
     &[data-success='true'] {
       color: $green;

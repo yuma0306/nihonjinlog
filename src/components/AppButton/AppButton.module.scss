@@ -10,7 +10,7 @@
     width: min(100%, 400px);
     margin-inline: auto;
     text-align: center;
-    font-weight: 700;
+    font-weight: $fwBold;
     box-shadow: 0 4px 0 0 $primaryShadow80;
     transition: transform $transition, box-shadow $transition;
     &:disabled {

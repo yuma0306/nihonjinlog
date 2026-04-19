@@ -14,13 +14,13 @@
     background-color: $gray;
     color: $white;
     text-box: trim-both;
-    font-weight: 500;
+    font-weight: $fwMedium;
     &[data-required='true'] {
       background-color: $valid;
     }
   }
   .text {
-    font-weight: 500;
+    font-weight: $fwMedium;
     flex: 1;
   }
 }
