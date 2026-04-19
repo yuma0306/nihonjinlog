@@ -4,6 +4,8 @@ const nextConfig: NextConfig = {
 	reactStrictMode: true,
 	trailingSlash: true,
 	images: {
+		formats: ['image/avif', 'image/webp'],
+		minimumCacheTTL: 60 * 60 * 24 * 7, // 7日
 		remotePatterns: [
 			{
 				protocol: 'https',

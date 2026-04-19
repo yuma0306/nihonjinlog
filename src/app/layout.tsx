@@ -17,8 +17,10 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="ja" data-scroll-behavior="smooth">
-			<GoogleTagManager gtmId={`GTM-${siteConfig.gtmId}`} />
-			<body className={`${font.className}`}>{children}</body>
+			{process.env.NODE_ENV === 'production' && siteConfig.gtmId && (
+				<GoogleTagManager gtmId={`GTM-${siteConfig.gtmId}`} />
+			)}
+			<body className={font.className}>{children}</body>
 		</html>
 	);
 }
