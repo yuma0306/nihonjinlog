@@ -158,9 +158,9 @@ $maxWidth: 640px;
         border-width: 0 #{$space3}px #{$space3}px 0;
       }
       li {
-        padding-left: #{$space3}px;
+        padding-left: #{$space4}px;
         &::before {
-          top: calc(#{$space2}px * -.8);
+          top: calc(#{$space2}px * -.6);
           width: #{$space3}px;
         }
       }
@@ -215,10 +215,10 @@ $maxWidth: 640px;
         border-width: 0 vw(#{$space2}) vw(#{$space2}) 0;
       }
       li {
-        padding-left: vw(#{$space2});
+        padding-left: vw(#{$space4});
         &::before {
-          top: calc(vw(#{$space2})* -.8);
-          width: vw(#{$space2});
+          top: calc(vw(#{$space2}) * -.6);
+          width: vw(#{$space3});
         }
       }
     }
